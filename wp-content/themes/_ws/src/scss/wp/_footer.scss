@@ -1,0 +1,43 @@
+#site-footer {
+  width: 100%;
+  background: $primary-dark;
+  p, small {
+    color: #fff;
+  }
+  svg {
+    fill: #fff;
+  }
+}
+.footer-widgets {
+  padding-top: $section-padding;
+  list-style: none;
+  .widget {
+    padding-left: $grid-padding;
+    padding-right: $grid-padding;
+    margin-bottom: 50px;
+    @extend .col-lg-3;
+    @extend .col-md-6;
+    @extend .col-sm-12;
+    @extend .col-xs-12;
+  }
+  .widgettitle {
+    color: #fff;
+  }
+  .sub-menu {
+    padding-left: 15px;
+  }
+}
+.sub-footer {
+  padding-bottom: 10px;
+}
+.copyright {
+  text-align: right;
+  display: flex;
+  align-items: center;
+  @include media-breakpoint-down(sm) {
+    text-align: left;
+  }
+  small {
+    flex: 1;
+  }
+}

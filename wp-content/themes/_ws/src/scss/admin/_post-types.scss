@@ -1,0 +1,53 @@
+#banner-meta-inside {
+  .headline-type {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    li {
+      margin: 0 15px 0 0;
+      input {
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+#seo-meta-inside {
+  .seo-preview {
+    background: #eee;
+    padding: 10px;
+    margin-top: 5px;
+    p {
+      margin: 0;
+      font-family: Arial;
+    }
+    #seo-preview-title {
+      font-size: 18px;
+      color: #1a0dab;
+    }
+    #seo-preview-url {
+      font-size: 14px;
+      color: #006621;
+    }
+    #seo-preview-desc {
+      font-size: 13px;
+      color: #545454;
+    }
+  }
+  #seo-advanced-options {
+    display: none;
+  }
+}
+
+#social-meta-inside {
+  #social-media-selector {
+    margin-top: 5px;
+  }
+}
+
+#event-meta-inside {
+  #event-map {
+    width: 100%;
+    height: 350px;
+  }
+}

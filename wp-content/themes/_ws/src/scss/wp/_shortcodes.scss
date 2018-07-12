@@ -1,0 +1,13 @@
+.social-icons {
+  height: 24px;
+  a {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  svg {
+    min-width: 24px;
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+}

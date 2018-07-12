@@ -1,0 +1,40 @@
+{
+  "name": "wordpress",
+  "version": "1.0.0",
+  "description": "Walker Sands Base WordPress Theme (_ws)",
+  "main": "index.php",
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/walkersandsdigital/walkersands_base_wp-theme.git"
+  },
+  "author": "Blake Boucher",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/walkersandsdigital/walkersands_base_wp-theme#readme",
+  "dependencies": {
+    "objectFitPolyfill": "^2.1.1",
+    "svg4everybody": "^2.1.9",
+    "tiny-slider": "^2.7.3",
+    "vue": "^2.5.16"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "browser-sync": "^2.24.4",
+    "del": "^3.0.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-babel": "^7.0.1",
+    "gulp-cli": "^2.0.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-include": "^2.3.1",
+    "gulp-plumber": "^1.2.0",
+    "gulp-rename": "^1.2.3",
+    "gulp-sass": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.0"
+  }
+}
