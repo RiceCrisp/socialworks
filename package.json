@@ -1,7 +1,7 @@
 {
   "name": "wordpress",
   "version": "1.0.0",
-  "description": "Walker Sands Base WordPress Theme (_ws)",
+  "description": "Social Works WordPress Theme (_sw)",
   "main": "index.php",
   "scripts": {
     "start": "gulp",
@@ -9,11 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/walkersandsdigital/walkersands_base_wp-theme.git"
+    "url": "git+ssh://git@github.com:RiceCrisp/socialworks.git"
   },
   "author": "Blake Boucher",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/walkersandsdigital/walkersands_base_wp-theme#readme",
   "dependencies": {
     "objectFitPolyfill": "^2.1.1",
     "svg4everybody": "^2.1.9",
