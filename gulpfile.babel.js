@@ -13,7 +13,7 @@ import sourcemaps from 'gulp-sourcemaps';
 import rename from 'gulp-rename';
 import include from 'gulp-include';
 
-const base = 'wp-content/themes/_ws/';
+const base = 'wp-content/themes/_sw/';
 
 // Clean dist folder
 const gClean = function(done) {
@@ -30,8 +30,8 @@ gulp.task(gClean);
 const gBrowsersync = function(done) {
   browsersync.init({
     open: 'external',
-    host: 'wordpress.local.com',
-    proxy: 'wordpress.local.com'
+    host: 'socialworks.local.com',
+    proxy: 'socialworks.local.com'
   });
   done();
 };

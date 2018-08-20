@@ -24,14 +24,7 @@
   <header id="site-header" class="fixed">
     <div class="container row">
       <div class="logo-title">
-        <?php
-        if (has_custom_logo()) : ?>
-          <div class="logo"><?php the_custom_logo(); ?></div>
-        <?php
-        else : ?>
-          <h1 class="site-title"><a href="<?= esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
-        <?php
-        endif; ?>
+        <a href="<?= esc_url(home_url('/')); ?>" rel="home"><?= do_shortcode('[logo]'); ?></a>
       </div>
       <input id="hamburger" type="checkbox" />
       <label for="hamburger" class="hamburger">
@@ -86,9 +79,16 @@
           }
         }
         wp_nav_menu(array(
-          'theme_location' => 'header',
+          'theme_location' => 'header-left',
           'container' => 'nav',
-          'container_class' => 'header-menu',
+          'container_class' => 'header-menu header-left',
+          'walker' => new WPDocs_Walker_Nav_Menu(), // Comment this line to remove mobile dropdowns
+          'item_spacing' => 'discard'
+        ));
+        wp_nav_menu(array(
+          'theme_location' => 'header-right',
+          'container' => 'nav',
+          'container_class' => 'header-menu header-right',
           'walker' => new WPDocs_Walker_Nav_Menu(), // Comment this line to remove mobile dropdowns
           'item_spacing' => 'discard'
         )); ?>

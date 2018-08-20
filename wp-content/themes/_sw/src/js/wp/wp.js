@@ -441,6 +441,65 @@ function onScreen(el, offset) {
   // setInterval(resizeParentFrame, 500);
 })();
 
+// function initMap() {
+//   var mapz = document.querySelectorAll('.google-map');
+//   for (i = 0; i < mapz.length; i++) {
+//     var mapObj = mapz[i];
+//     if (mapObj.querySelector('.map-canvas > *')) {
+//       google.maps.event.trigger(mapObj.map, 'resize');
+//       mapObj.map.fitBounds(mapObj.bounds);
+//       if (zoom = mapObj.querySelector('.map-canvas').getAttribute('zoom')) {
+//         mapObj.map.setZoom(mapObj.map.getZoom() - parseInt(zoom));
+//       } else {
+//         mapObj.map.setZoom(mapObj.map.getZoom() - 1);
+//       }
+//       continue;
+//     }
+//     var map = new google.maps.Map(mapObj.querySelector('.map-canvas'), {
+//       center: {lat: 37.09, lng: -95.71},
+//       scrollwheel: false,
+//       streetViewControl: false,
+//       mapTypeControl: false,
+//       fullscreenControl: false,
+//       zoom: 4
+//     });
+//     var markers = [];
+//     var locs = mapObj.querySelectorAll('.location');
+//     for (ii = 0; ii < locs.length; ii++) {
+//       var coords = locs[ii].value.split('~%~%~');
+//       var directions = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURI(coords[4].replace('<br>', ', '));
+//       var infoWindow = new google.maps.InfoWindow({
+//         content: '<div class="map-info-window">' . locs[i] . '</div>'
+//       });
+//       markers[ii] = new google.maps.Marker({
+//         position: {
+//           lat: parseFloat(coords[0]),
+//           lng: parseFloat(coords[1])
+//         },
+//         map: map
+//       });
+//       markers[ii].addListener('click', function() {
+//         infoWindow.open(map, markers[ii]);
+//       });
+//     }
+//     var bounds = new google.maps.LatLngBounds();
+//     for (ii = 0; ii < markers.length; ii++) {
+//       bounds.extend(markers[ii].getPosition());
+//     }
+//     map.fitBounds(bounds);
+//     map.set('mapObj', mapObj);
+//     mapObj.map = map;
+//     mapObj.bounds = bounds;
+//     google.maps.event.addListenerOnce(map, 'bounds_changed', function() {
+//       if (zoom = this.mapObj.querySelector('.map-canvas').getAttribute('zoom')) {
+//         this.setZoom(this.getZoom() - parseInt(zoom));
+//       } else {
+//         this.setZoom(this.getZoom() - 1);
+//       }
+//     });
+//   }
+// }
+
 //=include _custom.js
 
 if (typeof svg4everybody == 'function') {

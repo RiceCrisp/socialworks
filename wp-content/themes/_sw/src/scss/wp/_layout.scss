@@ -1,17 +1,26 @@
 // General
 .page-header, .archive-header, .single-header {
-  padding-top: $header-padding;
+  padding-top: $header-padding + $menu-height;
   padding-bottom: $header-padding;
-  background-color: $primary-light;
+  background-color: $primary-dark;
   text-align: center;
-  @include overlay(rgba($primary, 0.3));
+  @include overlay(rgba(#000, 0.3));
   .page-title {
     color: #fff;
-    margin: 0;
+    margin: 0 0 1em;
   }
   .page-subtitle {
     color: #fff;
     margin: 0;
+    .btn {
+      @extend .btn-alt;
+      border-color: #fff;
+      color: #fff;
+      &:hover {
+        background-color: #fff;
+        color: $primary;
+      }
+    }
   }
 }
 main section {

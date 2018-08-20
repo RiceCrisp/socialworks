@@ -25,7 +25,8 @@ function _sw_setup() {
 
   // Register nav locations
   register_nav_menus(array(
-    'header' => esc_html__('Header', '_sw'),
+    'header-left' => esc_html__('Header Left', '_sw'),
+    'header-right' => esc_html__('Header Right', '_sw'),
     // 'footer' => esc_html__('Footer', '_sw')
   ));
 
@@ -90,7 +91,7 @@ add_action('template_redirect', '_sw_disable_author_archives');
 
 // Register scripts/styles
 function _sw_register_scripts() {
-  wp_register_style('font-css', 'https://fonts.googleapis.com/css?family=Lora|Open+Sans:300,400,700');
+  wp_register_style('font-css', 'https://fonts.googleapis.com/css?family=Montserrat:300,400,600');
   wp_register_style('wp-css', get_template_directory_uri() . '/dist/css/wp/wp.min.css', array(), '1.0');
   wp_register_style('admin-css', get_template_directory_uri() . '/dist/css/admin/admin.min.css', array(), '1.0');
   wp_register_style('jquery-ui-css', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css');
@@ -176,6 +177,13 @@ function _sw_admin_enqueue($hook) {
   }
 }
 add_action('admin_enqueue_scripts', '_sw_admin_enqueue');
+
+// Remove h1 and lower headlines from editor
+function _ws_tiny_mce_formats($init) {
+  $init['block_formats'] = 'Paragraph=p;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6;Preformatted=pre';
+  return $init;
+}
+add_filter('tiny_mce_before_init', '_ws_tiny_mce_formats');
 
 // Register widget areas
 function _sw_register_widget_areas() {

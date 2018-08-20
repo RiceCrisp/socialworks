@@ -28,10 +28,7 @@ function _sw_social_meta_fields() {
       <li class="row">
         <div class="col-xs-12">
           <label for="social-img">Image <small>If left blank, defaults to page thumbnail</small></label>
-          <div class="row">
-            <button class="button media-selector" target="#social-img">Select Image</button>
-            <input id="social-img" class="flex-1" name="social-img" type="text" value="<?= $social_img; ?>" />
-          </div>
+          <?= _sw_media_selector('social-img', 'social-img', $social_img); ?>
         </div>
       </li>
       <li class="row">

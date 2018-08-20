@@ -21,38 +21,38 @@
 $text-color: #333;
 $text-color-light: #777;
 
-$primary: #023051;
+$primary: #f66551;
 $primary-light: lighten($primary, 10%);
 $primary-dark: darken($primary, 5%);
 
-$secondary: #299;
+$secondary: #3fefd8;
 $secondary-light: lighten($secondary, 10%);
 $secondary-dark: darken($secondary, 10%);
 
-$gray: #F9F9F9;
+$gray: #F7F7F7;
 $grey: $gray;
 
 $border-color: #ddd;
 $border-radius: 5px;
 $shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 
-$heading-font: 'Open Sans', sans-serif;
-$text-font: 'Open Sans', sans-serif;
-$font: 'Open Sans', sans-serif;
+$font: 'Montserrat';
+$heading-font: $font, sans-serif;
+$text-font: $font, sans-serif;
 
-$light: 100;
-$normal: 300;
+$light: 300;
+$normal: 400;
 $bold: 600;
 
 $default-margin: 20px;
 $input-padding: 10px;
-$input-border-radius: 0;
+$input-border-radius: 4px;
 $input-margin: 30px;
 $menu-height: 100px;
 $scroll-menu-height: 80px;
 $mobile-menu-height: 60px;
-$header-padding: 50px;
-$section-padding: 50px;
+$header-padding: 200px;
+$section-padding: 80px;
 $row-padding: 6px;
 $grid-padding: 6px;
 $card-padding: 50px;

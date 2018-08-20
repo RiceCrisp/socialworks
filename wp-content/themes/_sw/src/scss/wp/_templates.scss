@@ -1,0 +1,61 @@
+[template=front-page] {
+  .page-header {
+    b {
+      color: $secondary;
+    }
+  }
+  @at-root {
+    .fp-events {
+      margin-top: -$section-padding*3;
+      h2 {
+        color: #fff;
+      }
+      .card {
+        text-align: center;
+      }
+    }
+    .fp-news {
+      background-color: $gray;
+      .card {
+        text-align: center;
+      }
+    }
+  }
+}
+.hero {
+  height: 600px;
+}
+.map {
+  background-color: $primary;
+  p {
+    color: #fff;
+  }
+  .kpi {
+    text-align: center;
+  }
+}
+[template=initiative-page] {
+@at-root {
+  .init-main {
+    .card {
+      .card-content {
+        text-align: left;
+      }
+    }
+  }
+  .init-kpis {
+    margin-top: -$section-padding*3;
+    .kpi {
+      padding: $card-padding;
+      text-align: center;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      p:last-child {
+        margin: 0;
+      }
+    }
+  }
+}
+}

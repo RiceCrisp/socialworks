@@ -18,7 +18,7 @@ function _sw_banner_meta_fields() {
       <li class="row">
         <div class="col-xs-12">
           <label for="banner-subheadline">Sub-Headline</label>
-          <textarea id="banner-subheadline" name="banner-subheadline"><?= $banner_subheadline; ?></textarea>
+          <textarea id="banner-subheadline" name="banner-subheadline" class="text-editor"><?= $banner_subheadline; ?></textarea>
         </div>
       </li>
       <!-- <li class="row">

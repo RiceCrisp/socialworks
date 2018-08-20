@@ -34,15 +34,16 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 h1, .h1 {
-  font-size: rem(42);
+  font-size: rem(36);
 }
 
 h2, .h2 {
-  font-size: rem(38);
+  font-size: rem(36);
+  font-weight: $bold;
 }
 
 h3, .h3 {
-  font-size: rem(32);
+  font-size: rem(24);
 }
 
 h4, .h4 {
@@ -64,6 +65,11 @@ a, .a {
   &:hover {
     color: $secondary-dark;
   }
+}
+
+.big {
+  font-weight: $bold;
+  font-size: rem(48);
 }
 
 b, strong {
@@ -138,19 +144,31 @@ input::placeholder, textarea::placeholder {
   color: #fff;
   border: 0;
   border-radius: $input-border-radius;
-  background-color: $secondary;
-  padding: $input-padding;
+  background-color: $primary;
+  padding: em(12) em(36);
   cursor: pointer;
   transition: 0.3s;
   appearance: none;
+  font-size: rem(14);
+  font-weight: $bold;
+  min-width: 160px;
   &:hover {
-    background-color: $secondary-dark;
+    background-color: $primary-dark;
     color: #fff;
   }
 }
 
 button, input[type=button], input[type=submit], .btn, .button,  {
   @extend %button;
+}
+.btn-alt {
+  @extend %button;
+  background: transparent;
+  border: 1px solid $primary;
+  color: $primary;
+  &:hover {
+    background: $primary;
+  }
 }
 
 %select {
@@ -305,12 +323,16 @@ svg {
   background-color: #fff;
   box-shadow: $shadow;
   padding: $card-padding;
+  height: 100%;
   @include media-breakpoint-down(xs) {
     padding: 25px;
   }
   & *:last-child {
     margin-bottom: 0;
   }
+}
+.card-container {
+  margin-bottom: $grid-padding*2;
 }
 .card {
   @extend %card;
@@ -445,4 +467,20 @@ video.no-fullscreen {
     margin-left: -$grid-padding*2;
     margin-right: -$grid-padding*2;
   }
+}
+
+.gray {
+  background-color: $gray;
+}
+
+.orange {
+  background-color: $primary;
+  p, h2, a, span {
+    color: #fff;
+  }
+}
+
+.subhead {
+  font-size: rem(12);
+  font-weight: $bold;
 }

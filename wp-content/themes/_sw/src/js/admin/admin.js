@@ -30,8 +30,8 @@ if (jQuery('#seo-meta-inside #seo-desc').val()) {
 var mediaUploader;
 jQuery(document).on('click', '.media-selector', function(e) {
   e.preventDefault();
-  var target = jQuery(this).attr('target');
-  var size = jQuery(this).attr('size');
+  // var target = jQuery(this).attr('target');
+  // var size = jQuery(this).attr('size');
   mediaUploader = wp.media.frames.file_frame = wp.media({
     title: 'Select Image',
     button: {
@@ -39,15 +39,23 @@ jQuery(document).on('click', '.media-selector', function(e) {
   }, multiple: false });
   mediaUploader.on('select', function() {
     var attachment = mediaUploader.state().get('selection').first().toJSON();
-    if (size && attachment.sizes[size]) {
-      jQuery(target).val(attachment.sizes[size].url.substring(attachment.sizes[size].url.indexOf('/wp-content/')));
-      jQuery(target)[0].dispatchEvent(new Event('input', {'bubbles': true}));
-    } else {
-      jQuery(target).val(attachment.url.substring(attachment.url.indexOf('/wp-content/')));
-      jQuery(target)[0].dispatchEvent(new Event('input', {'bubbles': true}));
+    console.log(attachment);
+    jQuery(e.target).next().val(attachment.id);
+    if (attachment.sizes && attachment.sizes.standard) {
+      jQuery(e.target).next().next().find('img').attr('src', attachment.sizes.standard.url);
     }
+    else {
+      jQuery(e.target).next().next().find('img').attr('src', attachment.url);
+    }
+    jQuery(e.target).next()[0].dispatchEvent(new Event('input', {'bubbles': true}));
   });
   mediaUploader.open();
+});
+jQuery(document).on('click', '.media-preview button', function(e) {
+  e.preventDefault();
+  jQuery(e.target).closest('.media-preview').find('img').attr('src', '');
+  jQuery(e.target).closest('.media-preview').prev().val('');
+  jQuery(e.target).closest('.media-preview').prev()[0].dispatchEvent(new Event('input', {'bubbles': true}));
 });
 
 // Actually enfore the min/max for inputs

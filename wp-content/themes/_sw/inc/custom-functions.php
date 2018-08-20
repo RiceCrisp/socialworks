@@ -88,12 +88,25 @@ function _sw_thumbnail($id = null, $size = 'large', $lazy = false) {
     $x = get_post_meta($id, '_banner-x', true);
     $y = get_post_meta($id, '_banner-y', true);
     $xy = $x != '' && $y != '' ?  $x . '% ' . $y . '%' : '';
-    $output = $lazy ? '<img class="lazy-load" data-src="' . get_the_post_thumbnail_url($id, $size) . '"' : '<img src="' . get_the_post_thumbnail_url($id, $size) . '"';
-    $output .= ' alt="' . get_the_title($id) . '" style="object-fit:cover;' . ($xy ? 'object-position:' . $xy . ';' : '') . '" data-object-fit="cover" data-object-position="' . $xy . '" />';
+    $output = '<div class="thumbnail-container">';
+      $output .= $lazy ? '<img class="lazy-load" data-src="' . get_the_post_thumbnail_url($id, $size) . '"' : '<img src="' . get_the_post_thumbnail_url($id, $size) . '"';
+      $output .= ' alt="' . get_the_title($id) . '" style="object-fit:cover;' . ($xy ? 'object-position:' . $xy . ';' : '') . '" data-object-fit="cover" data-object-position="' . $xy . '" />';
+    $output .= '</div>';
     return $output;
   } else {
     return '';
   }
+}
+
+function _sw_img($id = null, $size = 'large', $lazy = false) {
+  if (!$id) {
+    return '';
+  }
+  $output = '<div class="thumbnail-container">';
+    $output .= $lazy ? '<img class="lazy-load" data-src="' . wp_get_attachment_image_src($id, $size)[0] . '"' : '<img src="' . wp_get_attachment_image_src($id, $size)[0] . '"';
+    $output .= ' alt="' . get_post_meta($id, '_wp_attachment_image_alt', true) . '" style="object-fit:cover;" data-object-fit="cover" />';
+  $output .= '</div>';
+  return $output;
 }
 
 // Get featured image for background images
@@ -110,8 +123,8 @@ function _sw_thumbnail_background($id = null, $size = 'full') {
   if (has_post_thumbnail($id)) {
     $x = get_post_meta($id, '_banner-x', true);
     $y = get_post_meta($id, '_banner-y', true);
-    $xy = $x != '' && $y != '' ? 'background-position: ' . $x . '% ' . $y . '%;' : '';
-    $output = 'background-image: url(' . get_the_post_thumbnail_url($id, $size) . ');' . $xy;
+    $xy = $x != '' && $y != '' ? $x . '% ' . $y . '%' : 'center';
+    $output = 'background:#005587 url(' . get_the_post_thumbnail_url($id, $size) . ') ' . $xy . '/cover;';
     return $output;
   } else {
     return '';
@@ -119,7 +132,7 @@ function _sw_thumbnail_background($id = null, $size = 'full') {
 }
 
 // Custom excerpt function that returns plain text
-function _sw_excerpt($id = null, $limit = 75, $end = '[...]') {
+function _sw_excerpt($id = null, $limit = 120, $end = '[...]') {
   if (!$id) {
     global $post;
     $id = $post->ID;
@@ -193,4 +206,39 @@ function _sw_build_menu(array $elements, $parentId = 0) {
     }
   }
   return $branch;
+}
+
+// Get breadcrumbs from url
+function _sw_breadcrumbs($separator = '&nbsp;&nbsp;|&nbsp;&nbsp;', $excludeCurrent = true) {
+  $p_ids = array();
+  $ps = explode('/', trim($_SERVER['REQUEST_URI'], '/'));
+  // print_r($ps);
+  for ($i = 0; $i < count($ps); $i++) {
+    $url = '';
+    for ($ii = 0; $ii <= $i; $ii++) {
+      $url .= $ps[$ii] . '/';
+    }
+    array_push($p_ids, url_to_postid($url));
+  }
+  if ($excludeCurrent) {
+    array_pop($p_ids);
+  }
+  $output = '';
+  foreach ($p_ids as $p_id) {
+    $output .= '<a href="' . get_permalink($p_id) . '">' . get_the_title($p_id) . '</a>' . $separator;
+  }
+  $output = trim($output, $separator);
+  return $output;
+}
+
+function _sw_media_selector($id = '', $name = '', $value = '') {
+  $output = '<div class="media-selector-container">
+    <button class="button media-selector">Select Image</button>
+    <input id="' . $id . '" name="' . $name . '" type="hidden" value="' . $value . '" />
+    <div class="media-preview">
+      <img src="' . wp_get_attachment_image_src($value, 'standard')[0] . '" />
+      <button><span class="dashicons dashicons-trash"></span></button>
+    </div>
+  </div>';
+  return $output;
 }

@@ -45,3 +45,43 @@ function _sw_news_post_type() {
   register_post_type('news', $args);
 }
 add_action('init', '_sw_news_post_type');
+
+// Fill meta box
+function _sw_news_meta_fields() {
+  wp_nonce_field(basename(__FILE__), 'news-nonce');
+  $news_source = get_post_meta(get_the_ID(), '_news-source', true); ?>
+  <div id="news-meta-inside" class="custom-meta-inside">
+    <ul>
+      <li class="row">
+        <div class="col-xs-12">
+          <label for="news-source">Source</label>
+          <input id="news-source" name="news-source" type="text" value="<?= $news_source; ?>" />
+        </div>
+      </li>
+    </ul>
+  </div>
+  <?php
+}
+
+// Create meta box
+function _sw_news_meta() {
+  add_meta_box('news_meta', 'News', '_sw_news_meta_fields', 'news', 'normal', 'high');
+}
+add_action('admin_init', '_sw_news_meta');
+
+// Save meta values
+function _sw_save_news_meta($post_id) {
+  if (!isset($_POST['news-nonce']) || !wp_verify_nonce($_POST['news-nonce'], basename(__FILE__))) {
+    return $post_id;
+  }
+  if (!current_user_can('edit_post', $post_id)) {
+    return $post_id;
+  }
+  if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+    return $post_id;
+  }
+
+  $news_source = isset($_POST['news-source']) ? $_POST['news-source'] : '';
+  update_post_meta($post_id, '_news-source', $news_source);
+}
+add_action('save_post', '_sw_save_news_meta');

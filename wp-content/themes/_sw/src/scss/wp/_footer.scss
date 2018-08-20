@@ -1,11 +1,17 @@
 #site-footer {
   width: 100%;
-  background: $primary-dark;
-  p, small {
+  background: #555;
+  a, p, small {
     color: #fff;
   }
-  svg {
+  svg:not(.logo) {
     fill: #fff;
+  }
+  .small {
+    opacity: 0.6;
+  }
+  .logo {
+    max-width: 150px;
   }
 }
 .footer-widgets {
@@ -23,21 +29,17 @@
   .widgettitle {
     color: #fff;
   }
+  .menu {
+    a {
+      display: inline-block;
+      margin-bottom: 5px;
+      font-weight: $bold;
+    }
+  }
   .sub-menu {
-    padding-left: 15px;
-  }
-}
-.sub-footer {
-  padding-bottom: 10px;
-}
-.copyright {
-  text-align: right;
-  display: flex;
-  align-items: center;
-  @include media-breakpoint-down(sm) {
-    text-align: left;
-  }
-  small {
-    flex: 1;
+    margin: 0;
+    a {
+      font-weight: $light;
+    }
   }
 }
