@@ -174,7 +174,7 @@ function _sw_card($atts, $content = null) {
   $btns = array_map('trim', explode(',', $a['buttons']));
   $output = '<div class="card ' . $a['class'] . '">';
     if ($a['img']) {
-      $output .= '<div class="card-img">' . _sw_thumbnail($a['img']) . '</div>';
+      $output .= _sw_thumbnail($a['img'], 'standard', true);
     }
     $output .= '<div class="card-content">' . $content . '</div>';
   $output .= '</div>';

@@ -17,7 +17,7 @@ get_header(); ?>
       ));
       foreach ($inits as $init) : ?>
         <div class="col-md-6 card-container">
-          <?= do_shortcode('[card]
+          <?= do_shortcode('[card img="' . $init->ID . '"]
             <h3>' . $init->post_title . '</h3>
             <p>' . _sw_excerpt($init->ID) . '</p>
             <a href="' . get_permalink($init->ID) . '" class="btn">Learn More</a>
@@ -39,7 +39,7 @@ get_header(); ?>
       <?php
       foreach ($events as $event) : ?>
         <div class="col-md-6 card-container">
-          <?= do_shortcode('[card]
+          <?= do_shortcode('[card img="' . $event->ID . '"]
             <p class="subhead">' . date("F d, Y", strtotime(get_post_meta($event->ID, '_event-start-date', true))) . '</p>
             <h3>' . $event->post_title . '</h3>
             <p>' . _sw_excerpt($event->ID) . '</p>
@@ -62,7 +62,7 @@ get_header(); ?>
       <?php
       foreach ($news as $article) : ?>
         <div class="col-md-4 card-container">
-          <?= do_shortcode('[card]
+          <?= do_shortcode('[card img="' . $article->ID . '"]
             <p class="subhead">' . get_post_meta($article->ID, '_news-source', true) . '<br />' . get_the_date('', $article->ID) . '</p>
             <h3>' . $article->post_title . '</h3>
           [/card]'); ?>
