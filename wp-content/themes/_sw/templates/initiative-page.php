@@ -74,7 +74,7 @@ get_header(); ?>
       <?php
       foreach ($news as $article) : ?>
         <div class="col-md-4 card-container">
-          <?= do_shortcode('[card]
+          <?= do_shortcode('[card img="' . $article->ID . '"]
             <p class="subhead">' . get_post_meta($article->ID, '_news-source', true) . '<br />' . get_the_date('', $article->ID) . '</p>
             <h3>' . $article->post_title . '</h3>
           [/card]'); ?>

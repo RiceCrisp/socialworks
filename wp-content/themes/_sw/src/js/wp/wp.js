@@ -500,6 +500,27 @@ function onScreen(el, offset) {
 //   }
 // }
 
+// Accessible card clicking
+document.addEventListener('click', function(e) {
+  var card = checkParents(e.target, '.link-container');
+  if (card) {
+    var l = card.querySelector('a');
+    if (l) {
+      if (l.hasAttribute('target')) {
+        var temp = document.createElement('a');
+        temp.href = l.href;
+        temp.target = l.target;
+        e.preventDefault();
+        temp.click();
+        temp = null;
+      }
+      else {
+        location.href = l.href;
+      }
+    }
+  }
+});
+
 //=include _custom.js
 
 if (typeof svg4everybody == 'function') {
