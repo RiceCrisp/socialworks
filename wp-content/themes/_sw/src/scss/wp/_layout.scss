@@ -5,6 +5,10 @@
   background-color: $primary-dark;
   text-align: center;
   @include overlay(rgba(#000, 0.3));
+  @include media-breakpoint-down(md) {
+    padding-top: $header-padding/2 + $menu-height;
+    padding-bottom: $header-padding/2;
+  }
   .page-title {
     color: #fff;
     margin: 0 0 1em;

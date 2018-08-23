@@ -2,7 +2,7 @@
 #site-header {
   position: relative;
   z-index: 10;
-  background-color: rgba(#000, 0.5);
+  background-color: rgba(#000, 0.75);
   &.fixed {
     position: fixed;
     width: 100%;
@@ -24,6 +24,7 @@
     padding-right: $grid-padding;
     flex: 1 1 auto;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
   }
 }
@@ -31,18 +32,17 @@
   padding: 0 $grid-padding;
   .logo {
     width: 100px;
+    display: block;
   }
 }
 .header-menu {
-  width: 100%;
   display: flex;
   align-items: center;
   &.header-left {
-    justify-content: flex-start;
   }
   &.header-right {
-    justify-content: flex-end;
     li {
+      margin-left: $grid-padding*2;
       &:hover {
         a {
           color: #fff;
@@ -52,6 +52,7 @@
     }
     a {
       @extend %button;
+      min-width: 100px;
       line-height: 1.5em;
     }
   }
@@ -111,7 +112,7 @@
     left: 9999em;
     opacity: 0;
     display: table;
-    background: rgba(#000, 0.5);
+    background: rgba(#000, 0.75);
     box-shadow: $shadow;
     min-width: 220px;
     width: 100%;
@@ -138,6 +139,7 @@
     svg {
       width: 20px;
       height: 20px;
+      fill: #fff;
     }
   }
 }
@@ -166,7 +168,7 @@
 @include media-breakpoint-down(md) {
   #site-header {
     &.fixed + * {
-      padding-top: $mobile-menu-height;
+      // padding-top: $mobile-menu-height;
     }
     .container, .container-fluid {
       padding: 0;
@@ -179,7 +181,7 @@
       width: 100%;
       position: absolute;
       top: $mobile-menu-height;
-      background-color: #fff;
+      background-color: rgba(#000, 0.75);
       left: 100%;
       right: 0;
       transition: 0.3s;
@@ -187,23 +189,30 @@
       overflow-x: hidden;
       overflow-y: scroll;
     }
+    .hamburger {
+      display: inline-block;
+      cursor: pointer;
+      height: 40px;
+      width: 40px;
+      margin: 0 $grid-padding*2 0 0;
+      path {
+        stroke-width: 5;
+        transition: 0.3s;
+      }
+    }
   }
   .logo-title {
     margin: 0 0 0 $grid-padding*2;
     padding: 0;
+    height: $mobile-menu-height;
+    display: flex;
+    align-items: center;
     > * {
-      line-height: $mobile-menu-height;
+      display: inline-block;
+      // height: $mobile-menu-height;
     }
-  }
-  .hamburger {
-    display: inline-block;
-    cursor: pointer;
-    height: 40px;
-    width: 40px;
-    margin: 0 $grid-padding*2 0 0;
-    path {
-      stroke-width: 5;
-      transition: 0.3s;
+    .logo {
+      width: 60px;
     }
   }
   #hamburger {
@@ -211,7 +220,7 @@
       stroke: transparent;
     }
     + label .closed {
-      stroke: $primary;
+      stroke: #fff;
     }
     &:checked {
       ~ .menu-container {
@@ -230,8 +239,39 @@
     width: 100%;
     padding: 0;
     display: block;
+    li {
+      &:hover {
+        background-color: none;
+      }
+    }
+    // &.header-left {
+    //   li {
+    //     &:hover {
+    //       a {
+    //         color: #fff;
+    //       }
+    //     }
+    //   }
+    // }
+    &.header-right {
+      li {
+        margin: 0;
+        &:hover {
+          a {
+            background: none;
+            color: $primary;
+          }
+        }
+        a {
+          background: none;
+          font-weight: $normal;
+          padding: $grid-padding*2;
+          font-size: rem(16);
+        }
+      }
+    }
     a {
-      line-height: normal;
+      line-height: 1.5em;
       flex: 1;
       position: relative;
       padding: $grid-padding*2;
@@ -242,11 +282,29 @@
       border-top: 1px solid $border-color;
       position: relative;
       text-align: left;
+      &:hover {
+        &:after {
+          display: none;
+        }
+        .sub-menu {
+          left: 9999em;
+          opacity: 0;
+        }
+      }
     }
     .sub-menu {
-      display: none;
+      transition: none;
+      left: 9999em;
+      opacity: 0;
       top: auto;
+      padding: 0;
+      border: none;
+      background: none;
+      li {
+        border: none;
+      }
       a {
+        line-height: 1.5em;
         padding-left: $grid-padding*4;
       }
     }
@@ -258,7 +316,10 @@
           }
         }
         ~ .sub-menu {
-          display: block;
+          transition: none;
+          position: relative;
+          left: 0;
+          opacity: 1;
         }
       }
       > .dropdown {
