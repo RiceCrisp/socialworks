@@ -152,6 +152,7 @@ input::placeholder, textarea::placeholder {
   font-size: rem(14);
   font-weight: $bold;
   min-width: 160px;
+  text-align: center;
   &:hover {
     background-color: $primary-dark;
     color: #fff;
