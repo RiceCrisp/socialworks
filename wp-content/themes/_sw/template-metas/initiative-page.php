@@ -2,13 +2,20 @@
 // Initiatives meta fields
 function _sw_init_meta_fields() {
   wp_nonce_field(basename(__FILE__), 'init-nonce');
+  $init_side = get_post_meta(get_the_ID(), '_init-side', true);
   $init_text = get_post_meta(get_the_ID(), '_init-text', true);
   $init_img = get_post_meta(get_the_ID(), '_init-img', true);
   $init_kpis_img = get_post_meta(get_the_ID(), '_init-kpis-img', true);
   $init_kpis = get_post_meta(get_the_ID(), '_init-kpis', true) ?: array('', '', '');
-  $init_partners = get_post_meta(get_the_ID(), '_init-partners', true) ?: array('', '', '', '', '', ''); ?>
+  $init_partners = get_post_meta(get_the_ID(), '_init-partners', true) ?: array(); ?>
   <div id="init-meta-inside" class="custom-meta-inside">
     <ul>
+      <li class="row">
+        <div class="col-xs-12">
+          <label for="init-side">Side Image</label>
+          <?= _sw_media_selector('init-side', 'init-side', $init_side); ?>
+        </div>
+      </li>
       <li class="row">
         <div class="col-xs-12">
           <fieldset>
@@ -20,7 +27,7 @@ function _sw_init_meta_fields() {
               </li>
               <li>
                 <label for="init-img">Image</label>
-                <?= _sw_img('init-img', 'init-img', $init_img); ?>
+                <?= _sw_media_selector('init-img', 'init-img', $init_img); ?>
               </li>
             </ul>
           </fieldset>
@@ -38,12 +45,38 @@ function _sw_init_meta_fields() {
               <?php
               foreach ($init_kpis as $i=>$kpi) : ?>
                 <li>
-                  <label for="init-kpis-<?= $i; ?>">KPI</label>
+                  <label for="init-kpis-<?= $i; ?>">KPI <?= $i+1; ?></label>
                   <textarea id="init-kpis-<?= $i; ?>" name="init-kpis[<?= $i; ?>]" class="text-editor"><?= $kpi; ?></textarea>
                 </li>
               <?php
               endforeach; ?>
             </ul>
+          </fieldset>
+        </div>
+      </li>
+      <li class="row">
+        <div class="col-xs-12">
+          <fieldset>
+            <legend>Partnerships</legend>
+            <ul class="sortable-container">
+              <?php
+              foreach ($init_partners as $i=>$partner) : ?>
+                <li class="sortable-item">
+                  <div class="sortable-header">
+                    <span class="dashicons dashicons-move sortable-handle"></span>
+                    <span class="dashicons dashicons-trash sortable-delete"></span>
+                  </div>
+                  <ul class="sortable-content">
+                    <li>
+                      <label for="init-partners-<?= $i; ?>">Image</label>
+                      <?= _sw_media_selector('init-partners-' . $i, 'init-partners[' . $i . ']', $partner); ?>
+                    </li>
+                  </ul>
+                </li>
+              <?php
+              endforeach; ?>
+            </ul>
+            <button id="add-partner" class="button">Add Partnership</button>
           </fieldset>
         </div>
       </li>
@@ -72,6 +105,9 @@ function _sw_save_init_meta($post_id) {
   if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
     return $post_id;
   }
+
+  $init_side = isset($_POST['init-side']) ? $_POST['init-side'] : '';
+  update_post_meta($post_id, '_init-side', $init_side);
 
   $init_text = isset($_POST['init-text']) ? $_POST['init-text'] : '';
   update_post_meta($post_id, '_init-text', $init_text);

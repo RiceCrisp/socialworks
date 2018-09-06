@@ -1,5 +1,30 @@
 //=include vue/dist/vue.js
 
+// Careers Page
+jQuery('#add-partner').on('click', function(e) {
+  e.preventDefault();
+  jQuery(this).prev().append('<li class="sortable-item">\
+    <div class="sortable-header">\
+      <span class="dashicons dashicons-move sortable-handle"></span>\
+      <span class="dashicons dashicons-trash sortable-delete"></span>\
+    </div>\
+    <ul class="sortable-content">\
+      <li>\
+        <label for="init-partners-00">Image</label>\
+        <div class="media-selector-container">\
+          <button class="button media-selector">Select Image</button>\
+          <input id="init-partners-00" name="init-partners[00]" type="hidden" />\
+          <div class="media-preview">\
+            <img src="" />\
+            <button><span class="dashicons dashicons-trash"></span></button>\
+          </div>\
+        </div>\
+      </li>\
+    </ul>\
+  </li>');
+  checkOrder();
+});
+
 // SEO advanced options toggle
 jQuery('#seo-meta-inside #seo-advanced-options-toggle').on('click', function(e) {
   e.preventDefault();

@@ -37,10 +37,24 @@
 [template=initiative-page] {
 @at-root {
   .init-main {
+    .row {
+      align-items: center;
+      .thumbnail-container {
+        margin-right: -100px;
+      }
+    }
     .card {
       .card-content {
         text-align: left;
       }
+    }
+  }
+  .init-secondary {
+    .row {
+      align-items: center;
+    }
+    .thumbnail-container, img {
+      border-radius: 50%;
     }
   }
   .init-kpis {
@@ -55,6 +69,11 @@
       p:last-child {
         margin: 0;
       }
+    }
+  }
+  .init-partners {
+    .thumbnail-container {
+      display: inline-block;
     }
   }
 }

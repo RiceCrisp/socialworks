@@ -8,7 +8,9 @@ get_header(); ?>
   get_template_part('template-parts/banner'); ?>
   <section class="init-main">
     <div class="container row">
-      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <?= _sw_img(get_post_meta(get_the_ID(), '_init-side', true), 'standard', true); ?>
+      </div>
       <div class="col-md-8 card-container">
         <?php
         if (have_posts()) : while (have_posts()) : the_post();
@@ -31,7 +33,7 @@ get_header(); ?>
           <?= $text; ?>
         </div>
         <div class="col-md-6">
-          <?= $img; ?>
+          <?= _sw_img($img, 'standard', true); ?>
         </div>
       </div>
     </section>
@@ -86,16 +88,16 @@ get_header(); ?>
       </div>
     </div>
   </section>
-  <section>
+  <section class="init-partners">
     <div class="container row">
       <div class="col-xs-12 center">
         <h2>Partnerships</h2>
       </div>
       <?php
-      $partners = get_post_meta(get_the_ID(), '_init_partners', true) ?: array();
+      $partners = get_post_meta(get_the_ID(), '_init-partners', true) ?: array();
       foreach ($partners as $partner) : ?>
-        <div class="col-lg-3 col-md-6">
-          <?= _sw_img($partner, 'standard', true); ?>
+        <div class="col-lg-4 col-md-6 center">
+          <?= _sw_img($partner, 'thumbnail', true); ?>
         </div>
       <?php
       endforeach; ?>
