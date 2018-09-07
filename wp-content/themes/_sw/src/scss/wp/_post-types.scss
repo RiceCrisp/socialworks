@@ -2,6 +2,11 @@
   .map-canvas {
     height: 300px;
   }
+  .info {
+    box-shadow: $shadow;
+    text-align: center;
+    padding: 25px;
+  }
 }
 #event-map {
   height: 300px;
