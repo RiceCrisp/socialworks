@@ -29,10 +29,10 @@ get_header(); ?>
   if ($text || $img) : ?>
     <section class="init-secondary">
       <div class="container row">
-        <div class="col-md-6">
+        <div class="col-xl-7col-lg-8 col-md-7">
           <?= $text; ?>
         </div>
-        <div class="col-md-6">
+        <div class="col-xl-offset-1 col-lg-4 col-md-5 col-sm-10 col-sm-offset-1">
           <?= _sw_img($img, 'standard', true); ?>
         </div>
       </div>
