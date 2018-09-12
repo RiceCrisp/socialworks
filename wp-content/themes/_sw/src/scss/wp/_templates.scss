@@ -26,12 +26,13 @@
   height: 600px;
 }
 .map {
-  background-color: $primary;
+  background: $primary url('/wp-content/uploads/2018/09/hands.png') 50% 105%/auto 150px repeat-x;
   p {
     color: #fff;
   }
   .kpi {
     text-align: center;
+    padding-bottom: 50px;
   }
 }
 [template=initiative-page] {

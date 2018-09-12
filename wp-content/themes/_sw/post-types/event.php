@@ -58,6 +58,8 @@ function _sw_event_meta_fields() {
   $sortable_end = get_post_meta(get_the_ID(), '_event-sortable-end', true);
   $json_start = get_post_meta(get_the_ID(), '_event-json-start', true);
   $json_end = get_post_meta(get_the_ID(), '_event-json-end', true);
+  $lat = get_post_meta(get_the_ID(), '_event-lat', true);
+  $lng = get_post_meta(get_the_ID(), '_event-lng', true);
   $location = get_post_meta(get_the_ID(), '_event-location', true); ?>
   <div id="event-meta-inside" class="custom-meta-inside">
     <ul>
@@ -97,6 +99,14 @@ function _sw_event_meta_fields() {
       </li>
     </li>
     <li class="row">
+      <div class="col-xs-6">
+        <label for="event-lat">Latitude</label>
+        <input id="event-lat" name="event-lat" type="number" value="<?= $lat; ?>" />
+      </div>
+      <div class="col-xs-6">
+        <label for="event-lng">Longitude</label>
+        <input id="event-lng" name="event-lng" type="number" value="<?= $lng; ?>" />
+      </div>
       <div class="col-xs-12">
         <label for="event-location">Location</label>
         <textarea id="event-location" name="event-location" class="text-editor"><?= $location; ?></textarea>
@@ -157,38 +167,11 @@ function _sw_save_event_meta($post_id) {
   $event_location = isset($_POST['event-location']) ? $_POST['event-location'] : '';
   update_post_meta($post_id, '_event-location', $event_location);
 
-  $event_location_override = isset($_POST['event-location-override']) ? $_POST['event-location-override'] : '';
-  update_post_meta($post_id, '_event-location-override', $event_location_override);
-
-  $event_location_id = isset($_POST['event-location-id']) ? $_POST['event-location-id'] : '';
-  update_post_meta($post_id, '_event-location-id', $event_location_id);
-
-  $event_location_name = isset($_POST['event-location-name']) ? $_POST['event-location-name'] : '';
-  update_post_meta($post_id, '_event-location-name', $event_location_name);
-
-  $event_location_street = isset($_POST['event-location-street']) ? $_POST['event-location-street'] : '';
-  update_post_meta($post_id, '_event-location-street', $event_location_street);
-
-  $event_location_city = isset($_POST['event-location-city']) ? $_POST['event-location-city'] : '';
-  update_post_meta($post_id, '_event-location-city', $event_location_city);
-
-  $event_location_state = isset($_POST['event-location-state']) ? $_POST['event-location-state'] : '';
-  update_post_meta($post_id, '_event-location-state', $event_location_state);
-
-  $event_location_zip = isset($_POST['event-location-zip']) ? $_POST['event-location-zip'] : '';
-  update_post_meta($post_id, '_event-location-zip', $event_location_zip);
-
-  $event_location_country = isset($_POST['event-location-country']) ? $_POST['event-location-country'] : '';
-  update_post_meta($post_id, '_event-location-country', $event_location_country);
-
   $event_location_lat = isset($_POST['event-location-lat']) ? $_POST['event-location-lat'] : '';
   update_post_meta($post_id, '_event-location-lat', $event_location_lat);
 
   $event_location_lng = isset($_POST['event-location-lng']) ? $_POST['event-location-lng'] : '';
   update_post_meta($post_id, '_event-location-lng', $event_location_lng);
-
-  $event_location_readable = isset($_POST['event-location-readable']) ? $_POST['event-location-readable'] : '';
-  update_post_meta($post_id, '_event-location-readable', $event_location_readable);
 }
 add_action('save_post', '_sw_save_event_meta');
 

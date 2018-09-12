@@ -108,9 +108,10 @@ label {
 }
 
 %input {
+  font-size: rem(14);
   width: 100%;
   margin: 0 0 $input-margin;
-  border: 0;
+  border: 1px solid $border-color;
   border-radius: $input-border-radius;
   padding: $input-padding;
   color: $text-color;

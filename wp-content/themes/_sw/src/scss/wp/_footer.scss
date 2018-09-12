@@ -1,3 +1,56 @@
+.pre-footer {
+  background-color: $gray;
+  .left-hands {
+    position: absolute;
+    right: 10%;
+    bottom: -10%;
+    width: 200%;
+    max-width: none;
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+  }
+  .form {
+    text-align: center;
+    padding-top: $section-padding/2;
+    padding-bottom: $section-padding/2;
+    form {
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    input[type=email] {
+      width: auto;
+      flex: 1 1 auto;
+      margin: 0 $grid-padding 0 0;
+    }
+    input[type=submit] {
+      flex: none;
+      margin: 0;
+      width: 100px;
+    }
+    @include media-breakpoint-down(xs) {
+      input[type=email], input[type=submit] {
+        flex: 1 1 100%;
+        margin: 0 0 $grid-padding;
+      }
+    }
+  }
+  .right-hands {
+    position: absolute;
+    left: 10%;
+    bottom: -10%;
+    width: 200%;
+    max-width: none;
+    @include media-breakpoint-down(sm) {
+      position: relative;
+      left: auto;
+      bottom: 0;
+      margin-bottom: -10%;
+      width: 100%;
+    }
+  }
+}
 #site-footer {
   width: 100%;
   background: #555;
