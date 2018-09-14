@@ -97,9 +97,9 @@ function _sw_register_scripts() {
   wp_register_style('jquery-ui-css', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css');
 
   wp_register_script('jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', array('jquery'), false, true);
-  wp_register_script('google-maps', 'https://maps.googleapis.com/maps/api/js?key=' . (get_option('google_maps') ?: 'AIzaSyB5dOtdhz53nCEusX4aU4yRKkOGns_Dsn8') . '&libraries=places&callback=initMap', array(), false, true);
   wp_register_script('amp', 'https://cdn.ampproject.org/v0.js', array(), null, false);
   wp_register_script('wp-js', get_template_directory_uri() . '/dist/js/wp/wp.min.js', array(), '1.0', true);
+  wp_register_script('google-maps', 'https://maps.googleapis.com/maps/api/js?key=' . (get_option('google_maps') ?: 'AIzaSyB5dOtdhz53nCEusX4aU4yRKkOGns_Dsn8') . '&libraries=places&callback=initMap', array('wp-js'), false, true);
   wp_register_script('admin-js', get_template_directory_uri() . '/dist/js/admin/admin.min.js', array('jquery', 'jquery-ui', 'wp-color-picker'), '1.0', true);
   wp_register_script('pagebuilder-js', get_template_directory_uri() . '/dist/js/admin/pagebuilder.min.js', array('jquery', 'jquery-ui'), '1.0', true);
   wp_register_script('event-js', get_template_directory_uri() . '/dist/js/admin/event.min.js', array('jquery', 'jquery-ui'), '1.0', true);
@@ -109,9 +109,9 @@ add_action('wp_loaded', '_sw_register_scripts');
 
 // Make frontend javascript defer
 function _sw_script_attribute($tag, $handle) {
-  if ($handle == 'wp-js') {
-    return str_replace(' src', ' defer src', $tag);
-  }
+  // if ($handle == 'wp-js') {
+  //   return str_replace(' src', ' defer src', $tag);
+  // }
   if ($handle == 'amp' || $handle == 'amp-analytics') {
     return str_replace(' src', ' async src', $tag);
   }
@@ -136,7 +136,12 @@ function _sw_wp_enqueue() {
   }
   else {
     wp_enqueue_style('wp-css');
-    wp_enqueue_script('wp-js');
+    if (is_page_template('templates/front-page.php') || $post_type == 'event') {
+      wp_enqueue_script('google-maps');
+    }
+    else {
+      wp_enqueue_script('wp-js');
+    }
   }
 }
 add_action('wp_enqueue_scripts', '_sw_wp_enqueue');

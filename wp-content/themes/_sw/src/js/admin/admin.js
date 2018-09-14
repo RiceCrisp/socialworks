@@ -1,5 +1,33 @@
 //=include vue/dist/vue.js
 
+// Location
+jQuery('#add-location').on('click', function(e) {
+  e.preventDefault();
+  jQuery(this).prev().append('<li class="sortable-item">\
+    <div class="sortable-header">\
+      <span class="dashicons dashicons-move sortable-handle"></span>\
+      <span class="dashicons dashicons-trash sortable-delete"></span>\
+    </div>\
+    <ul class="sortable-content">\
+      <li>\
+        <label for="fp-locations-00-address">Address</label>\
+        <textarea id="fp-locations-00-address" name="fp-locations[00][address]" class="text-editor"></textarea>\
+      </li>\
+      <li class="row">\
+        <div class="col-sm-6">\
+          <label for="fp-locations-00-lat">Latitude</label>\
+          <input id="fp-locations-00-lat" name="fp-locations[00][lat]" type="number" />\
+        </div>\
+        <div class="col-sm-6">\
+          <label for="fp-locations-00-lng">Longitude</label>\
+          <input id="fp-locations-00-lng" name="fp-locations[00][lng]" type="number" />\
+        </div>\
+      </li>\
+    </ul>\
+  </li>');
+  checkOrder();
+});
+
 // Careers Page
 jQuery('#add-partner').on('click', function(e) {
   e.preventDefault();

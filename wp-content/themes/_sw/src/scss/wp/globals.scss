@@ -494,6 +494,10 @@ video.no-fullscreen {
   }
 }
 
+.google-map, .map-canvas {
+  height: 100%;
+}
+
 .gray {
   background-color: $gray;
 }

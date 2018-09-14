@@ -9,6 +9,7 @@ function _sw_fp_meta_fields() {
   $fp_cta_2_btn_text = get_post_meta(get_the_ID(), '_fp-cta-2-btn-text', true);
   $fp_cta_2_btn_url = get_post_meta(get_the_ID(), '_fp-cta-2-btn-url', true);
   $fp_cta_2_btn_url = get_post_meta(get_the_ID(), '_fp-cta-2-btn-url', true);
+  $fp_locations = get_post_meta(get_the_ID(), '_fp-locations', true) ?: array();
   $fp_social_img = get_post_meta(get_the_ID(), '_fp-social-img', true) ?: array('', '', '', ''); ?>
   <div id="fp-meta-inside" class="custom-meta-inside">
     <ul>
@@ -55,6 +56,42 @@ function _sw_fp_meta_fields() {
                 </div>
               </li>
             </ul>
+          </fieldset>
+        </div>
+      </li>
+      <li class="row">
+        <div class="col-xs-12">
+          <fieldset>
+            <legend>Locations</legend>
+            <ul class="sortable-container">
+              <?php
+              foreach ($fp_locations as $i=>$loc) : ?>
+                <li class="sortable-item">
+                  <div class="sortable-header">
+                    <span class="dashicons dashicons-move sortable-handle"></span>
+                    <span class="dashicons dashicons-trash sortable-delete"></span>
+                  </div>
+                  <ul class="sortable-content">
+                    <li>
+                      <label for="fp-locations-<?= $i; ?>-address">Address</label>
+                      <textarea id="fp-locations-<?= $i; ?>-address" name="fp-locations[<?= $i; ?>][address]" class="text-editor"><?= $loc['address']; ?></textarea>
+                    </li>
+                    <li class="row">
+                      <div class="col-sm-6">
+                        <label for="fp-locations-<?= $i; ?>-lat">Latitude</label>
+                        <input id="fp-locations-<?= $i; ?>-lat" name="fp-locations[<?= $i; ?>][lat]" type="number" value="<?= $loc['lat']; ?>" />
+                      </div>
+                      <div class="col-sm-6">
+                        <label for="fp-locations-<?= $i; ?>-lng">Longitude</label>
+                        <input id="fp-locations-<?= $i; ?>-lng" name="fp-locations[<?= $i; ?>][lng]" type="number" value="<?= $loc['lng']; ?>" />
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+              <?php
+              endforeach; ?>
+            </ul>
+            <button id="add-location" class="button">Add Location</button>
           </fieldset>
         </div>
       </li>
@@ -115,5 +152,8 @@ function _sw_save_fp_meta($post_id) {
 
   $fp_cta_2_btn_link = isset($_POST['fp-cta-2-btn-link']) ? $_POST['fp-cta-2-btn-link'] : '';
   update_post_meta($post_id, '_fp-cta-2-btn-link', $fp_cta_2_btn_link);
+
+  $fp_locations = isset($_POST['fp-locations']) ? $_POST['fp-locations'] : '';
+  update_post_meta($post_id, '_fp-locations', $fp_locations);
 }
 add_action('save_post', '_sw_save_fp_meta');

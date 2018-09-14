@@ -27,12 +27,13 @@
 }
 .map {
   background: $primary url('/wp-content/uploads/2018/09/hands.png') 50% 105%/auto 150px repeat-x;
+  padding: 0;
   p {
     color: #fff;
   }
   .kpi {
+    padding: $section-padding ($grid-padding*2) ($section-padding+50px) ($grid-padding*2);
     text-align: center;
-    padding-bottom: 50px;
   }
 }
 [template=initiative-page] {

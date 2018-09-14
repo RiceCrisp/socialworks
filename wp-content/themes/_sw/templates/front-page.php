@@ -17,7 +17,8 @@ get_header(); ?>
       ));
       foreach ($inits as $init) : ?>
         <div class="col-md-6 card-container">
-          <?= do_shortcode('[card img="' . $init->ID . '"]
+          <?php
+          echo do_shortcode('[card img="' . $init->ID . '"]
             <h3>' . $init->post_title . '</h3>
             <p>' . _sw_excerpt($init->ID) . '</p>
             <div>
@@ -87,16 +88,21 @@ get_header(); ?>
     </div>
   </section>
   <section class="map orange">
-    <div class="row">
+    <div class="row no-padding">
       <div class="col-md-4 kpi">
         <p><span class="big">22</span><br />Schools Affected</p>
         <hr />
         <p><span class="big">$220K</span><br />Money Donated</p>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-8 no-padding">
         <div class="google-map">
           <div class="map-canvas"></div>
-          <input class="location" type="hidden" value="" />
+          <?php
+          $locs = get_post_meta(get_the_ID(), '_fp-locations', true);
+          foreach ($locs as $loc) : ?>
+            <input class="location" type="hidden" value="<?= $loc['lat']; ?>~%~%~<?= $loc['lng']; ?>~%~%~<?= $loc['address']; ?>" />
+          <?php
+          endforeach; ?>
         </div>
       </div>
     </div>
