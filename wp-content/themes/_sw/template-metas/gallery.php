@@ -41,7 +41,7 @@ function _sw_gallery_meta_fields() {
 // Create meta box
 function _sw_gallery_meta() {
   global $post;
-  if (get_post_meta($post->ID, '_wp_page_template', true) == 'templates/gallery-page.php') {
+  if (get_post_meta($post->ID, '_wp_page_template', true) == 'templates/gallery.php') {
     add_meta_box('gallery-meta-box', 'Gallery Template Options', '_sw_gallery_meta_fields', 'page', 'normal', 'high');
   }
 }
