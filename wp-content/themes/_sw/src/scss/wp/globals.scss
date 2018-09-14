@@ -346,6 +346,11 @@ svg {
 }
 .card-container {
   margin-bottom: $grid-padding*2;
+  ~ .center {
+    .btn {
+      margin-top: $section-padding/2 - $grid-padding*2;
+    }
+  }
 }
 .card {
   @extend %card;

@@ -164,14 +164,14 @@ function _sw_save_event_meta($post_id) {
   $event_json_end = isset($_POST['event-json-end']) ? $_POST['event-json-end'] : '';
   update_post_meta($post_id, '_event-json-end', $event_json_end);
 
+  $event_lat = isset($_POST['event-lat']) ? $_POST['event-lat'] : '';
+  update_post_meta($post_id, '_event-lat', $event_lat);
+
+  $event_lng = isset($_POST['event-lng']) ? $_POST['event-lng'] : '';
+  update_post_meta($post_id, '_event-lng', $event_lng);
+
   $event_location = isset($_POST['event-location']) ? $_POST['event-location'] : '';
   update_post_meta($post_id, '_event-location', $event_location);
-
-  $event_location_lat = isset($_POST['event-location-lat']) ? $_POST['event-location-lat'] : '';
-  update_post_meta($post_id, '_event-location-lat', $event_location_lat);
-
-  $event_location_lng = isset($_POST['event-location-lng']) ? $_POST['event-location-lng'] : '';
-  update_post_meta($post_id, '_event-location-lng', $event_location_lng);
 }
 add_action('save_post', '_sw_save_event_meta');
 

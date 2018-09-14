@@ -81,3 +81,11 @@
   }
 }
 }
+
+[template="volunteer-page"] {
+@at-root {
+  .volunteer-ctas {
+    margin-top: -$section-padding*1.5;
+  }
+}
+}
