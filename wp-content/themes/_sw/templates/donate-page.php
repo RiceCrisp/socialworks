@@ -6,36 +6,23 @@ get_header(); ?>
 <main id="main" template="donate-page">
   <?php
   get_template_part('template-parts/banner'); ?>
-  <section class="dontate-ctas">
+  <section class="donate">
     <div class="container row">
-      <div class="col-md-6 card-container">
+      <div class="col-xs-12 card-container">
         <div class="card">
-          <?= get_post_meta(get_the_ID(), '_volunteer-card-1', true); ?>
-        </div>
-      </div>
-      <div class="col-md-6 card-container">
-        <div class="card">
-          <?= get_post_meta(get_the_ID(), '_volunteer-card-2', true); ?>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section>
-    <h2>Gallery</h2>
-  </section>
-  <section class="volunteer-kpis">
-    <div class="container row">
-      <?php
-      $kpis = get_post_meta(get_the_ID(), '_volunteer-kpis', true);
-      foreach ($kpis as $kpi) : ?>
-        <div class="col-lg-4 card-container">
-          <div class="card">
-            <?= $kpi['img']; ?>
-            <?= $kpi['content']; ?>
+          <div class="row">
+            <div class="col-xl-7 col-lg-7 donate-col">
+              <?php
+              if (have_posts()) : while (have_posts()) : the_post();
+                the_content();
+              endwhile; endif; ?>
+            </div>
+            <div class="col-xl-4 col-xl-offset-1 col-lg-5 col-md-8 col-md-offset-2 donate-col">
+              <?= get_post_meta(get_the_ID(), '_donate-text', true); ?>
+            </div>
           </div>
         </div>
-      <?php
-      endforeach; ?>
+      </div>
     </div>
   </section>
 </main>

@@ -35,11 +35,13 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 h1, .h1 {
   font-size: rem(36);
+  line-height: 1.25em;
 }
 
 h2, .h2 {
   font-size: rem(36);
   font-weight: $bold;
+  line-height: 1.25em;
 }
 
 h3, .h3 {
@@ -501,6 +503,13 @@ video.no-fullscreen {
 
 .google-map, .map-canvas {
   height: 100%;
+}
+.google-map {
+  .map-info-window {
+    p {
+      color: $text-color;
+    }
+  }
 }
 
 .gray {

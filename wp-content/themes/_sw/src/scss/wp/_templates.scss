@@ -89,3 +89,24 @@
   }
 }
 }
+
+[template="donate-page"] {
+  .card {
+    .row {
+      align-items: center;
+    }
+  }
+@at-root {
+  .donate-col {
+    padding: $card-padding;
+    &:last-child {
+      @include media-breakpoint-down(md) {
+        padding-top: 0;
+      }
+    }
+    @include media-breakpoint-down(xs) {
+      padding: $grid-padding;
+    }
+  }
+}
+}

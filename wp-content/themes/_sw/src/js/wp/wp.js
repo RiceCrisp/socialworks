@@ -464,16 +464,82 @@ function initMap() {
       streetViewControl: false,
       mapTypeControl: false,
       fullscreenControl: false,
-      zoom: 4
+      zoom: 4,
+      styles: [
+        {
+          "stylers": [
+            {
+              "visibility": "simplified"
+            }
+          ]
+        },
+        {
+          "elementType": "labels.text",
+          "stylers": [
+            {
+              "color": "#5f969e"
+            }
+          ]
+        },
+        {
+          "featureType": "landscape.man_made",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "poi",
+          "elementType": "labels",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.business",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.park",
+          "elementType": "labels.text",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#ffccaf"
+            }
+          ]
+        },
+        {
+          "featureType": "water",
+          "stylers": [
+            {
+              "color": "#c9eced"
+            }
+          ]
+        }
+      ]
     });
     var markers = [];
     var locs = mapObj.querySelectorAll('.location');
     for (var ii = 0; ii < locs.length; ii++) {
       var coords = locs[ii].value.split('~%~%~');
       // var directions = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURI(coords[4].replace('<br>', ', '));
-      var infoWindow = new google.maps.InfoWindow({
-        content: '<div class="map-info-window">' + coords[2] + '</div>'
-      });
+
       markers[ii] = new google.maps.Marker({
         position: {
           lat: parseFloat(coords[0]),
@@ -481,8 +547,11 @@ function initMap() {
         },
         map: map
       });
+      markers[ii].infoWindow = new google.maps.InfoWindow({
+        content: '<div class="map-info-window">' + coords[2] + '</div>'
+      });
       markers[ii].addListener('click', function() {
-        infoWindow.open(map, markers[ii]);
+        this.infoWindow.open(map, this);
       });
     }
     var bounds = new google.maps.LatLngBounds();
