@@ -82,9 +82,30 @@
 }
 }
 
-[template="volunteer-page"] {
+[template="get-involved"] {
+  .card-content {
+    text-align: center;
+    img {
+      max-width: 150px;
+      margin: 0 auto;
+    }
+    .row {
+      flex: none;
+      margin: 0 (-$grid-padding*2);
+      margin-top: -$grid-padding;
+      flex-wrap: wrap;
+    }
+    [class^=col] {
+      flex: 1 1 50%;
+      padding: 0 $grid-padding;
+    }
+    .btn {
+      width: 100%;
+      margin-top: $grid-padding;
+    }
+  }
 @at-root {
-  .volunteer-ctas {
+  .involved-ctas {
     margin-top: -$section-padding*1.5;
   }
 }
