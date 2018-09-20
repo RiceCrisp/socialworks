@@ -2,9 +2,11 @@
 // Initiatives meta fields
 function _sw_init_meta_fields() {
   wp_nonce_field(basename(__FILE__), 'init-nonce');
+  $init_title = get_post_meta(get_the_ID(), '_init-title', true);
   $init_side = get_post_meta(get_the_ID(), '_init-side', true);
   $init_text = get_post_meta(get_the_ID(), '_init-text', true);
   $init_img = get_post_meta(get_the_ID(), '_init-img', true);
+  $init_tabs = get_post_meta(get_the_ID(), '_init-tabs', true) ?: array();
   $init_kpis_img = get_post_meta(get_the_ID(), '_init-kpis-img', true);
   $init_kpis = get_post_meta(get_the_ID(), '_init-kpis', true) ?: array('', '', '');
   $init_partners = get_post_meta(get_the_ID(), '_init-partners', true) ?: array(); ?>
@@ -12,24 +14,60 @@ function _sw_init_meta_fields() {
     <ul>
       <li class="row">
         <div class="col-xs-12">
-          <label for="init-side">Side Image</label>
-          <?= _sw_media_selector('init-side', 'init-side', $init_side); ?>
-        </div>
-      </li>
-      <li class="row">
-        <div class="col-xs-12">
           <fieldset>
-            <legend>Secondary Text</legend>
+            <legend>First Tab</legend>
             <ul>
+              <li class="row">
+                <div class="col-xs-12">
+                  <label for="init-title">Title</label>
+                  <input id="init-title" name="init-title" type="text" value="<?= $init_title; ?>" />
+                </div>
+              </li>
+              <li class="row">
+                <div class="col-xs-12">
+                  <label for="init-side">Side Image</label>
+                  <?= _sw_media_selector('init-side', 'init-side', $init_side); ?>
+                </div>
+              </li>
               <li>
-                <label for="init-text">Text</label>
+                <label for="init-text">Secondary Text</label>
                 <textarea id="init-text" name="init-text" class="text-editor"><?= $init_text; ?></textarea>
               </li>
               <li>
-                <label for="init-img">Image</label>
+                <label for="init-img">Secondary Image</label>
                 <?= _sw_media_selector('init-img', 'init-img', $init_img); ?>
               </li>
             </ul>
+          </fieldset>
+        </div>
+      </li>
+      <li>
+        <div class="col-xs-12">
+          <fieldset>
+            <legend>Extra Tabs <small>Optional</small></legend>
+            <ul class="sortable-container">
+              <?php
+              foreach ($init_tabs as $i=>$tab) : ?>
+                <li class="sortable-item">
+                  <div class="sortable-header">
+                    <span class="dashicons dashicons-move sortable-handle"></span>
+                    <span class="dashicons dashicons-trash sortable-delete"></span>
+                  </div>
+                  <ul class="sortable-content">
+                    <li>
+                      <label for="init-tabs-<?= $i; ?>-title">Title</label>
+                      <input id="init-tabs-<?= $i; ?>-title" name="init-tabs[<?= $i; ?>][title]" type="text" value="<?= $tab['title']; ?>" />
+                    </li>
+                    <li>
+                      <label for="init-tabs-<?= $i; ?>-content">Content</label>
+                      <textarea id="init-tabs-<?= $i; ?>-content" name="init-tabs[<?= $i; ?>][content]" class="text-editor"><?= $tab['content']; ?></textarea>
+                    </li>
+                  </ul>
+                </li>
+              <?php
+              endforeach; ?>
+            </ul>
+            <button id="add-tab" class="button">Add Tab</button>
           </fieldset>
         </div>
       </li>
@@ -106,6 +144,9 @@ function _sw_save_init_meta($post_id) {
     return $post_id;
   }
 
+  $init_title = isset($_POST['init-title']) ? $_POST['init-title'] : '';
+  update_post_meta($post_id, '_init-title', $init_title);
+
   $init_side = isset($_POST['init-side']) ? $_POST['init-side'] : '';
   update_post_meta($post_id, '_init-side', $init_side);
 
@@ -114,6 +155,9 @@ function _sw_save_init_meta($post_id) {
 
   $init_img = isset($_POST['init-img']) ? $_POST['init-img'] : '';
   update_post_meta($post_id, '_init-img', $init_img);
+
+  $init_tabs = isset($_POST['init-tabs']) ? $_POST['init-tabs'] : '';
+  update_post_meta($post_id, '_init-tabs', $init_tabs);
 
   $init_kpis_img = isset($_POST['init-kpis-img']) ? $_POST['init-kpis-img'] : '';
   update_post_meta($post_id, '_init-kpis-img', $init_kpis_img);

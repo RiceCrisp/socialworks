@@ -28,7 +28,27 @@ jQuery('#add-location').on('click', function(e) {
   checkOrder();
 });
 
-// Careers Page
+// Initiative Page
+jQuery('#add-tab').on('click', function(e) {
+  e.preventDefault();
+  jQuery(this).prev().append('<li class="sortable-item">\
+    <div class="sortable-header">\
+      <span class="dashicons dashicons-move sortable-handle"></span>\
+      <span class="dashicons dashicons-trash sortable-delete"></span>\
+    </div>\
+    <ul class="sortable-content">\
+      <li>\
+        <label for="init-tabs-00-title">Title</label>\
+        <input id="init-tabs-00-title" name="init-tabs[00][title]" type="text" />\
+      </li>\
+      <li>\
+        <label for="init-tabs-00-content">Content</label>\
+        <textarea id="init-tabs-00-content" name="init-tabs[00][content]" class="text-editor"></textarea>\
+      </li>\
+    </ul>\
+  </li>');
+  checkOrder();
+});
 jQuery('#add-partner').on('click', function(e) {
   e.preventDefault();
   jQuery(this).prev().append('<li class="sortable-item">\

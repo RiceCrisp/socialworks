@@ -20,7 +20,6 @@
 
 .card {
   box-shadow: $shadow;
-  margin-bottom: $grid-padding*2;
   @at-root {
     h3 {
       color: $primary;

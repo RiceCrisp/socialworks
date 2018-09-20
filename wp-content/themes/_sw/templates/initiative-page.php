@@ -5,39 +5,112 @@ get_header(); ?>
 
 <main id="main" template="initiative-page">
   <?php
-  get_template_part('template-parts/banner'); ?>
-  <section class="init-main">
-    <div class="container row">
-      <div class="col-md-4">
-        <?= _sw_img(get_post_meta(get_the_ID(), '_init-side', true), 'standard', true); ?>
-      </div>
-      <div class="col-md-8 card-container">
-        <?php
-        if (have_posts()) : while (have_posts()) : the_post();
-          ob_start();
-          the_content();
-          $content = ob_get_contents();
-          ob_end_clean();
-          echo do_shortcode('[card]' . $content . '[/card]');
-        endwhile; endif; ?>
+  get_template_part('template-parts/banner');
+  $tabs = get_post_meta(get_the_ID(), '_init-tabs', true);
+  if ($tabs) : ?>
+    <div class="tabs-nav-container">
+      <div class="container row">
+        <ul class="col-xs-12 tabs-nav">
+          <li>
+            <?php
+            $t = get_post_meta(get_the_ID(), '_init-title', true); ?>
+            <a href="#<?= sanitize_title($t); ?>"><?= $t; ?></a>
+          </li>
+          <?php
+          foreach ($tabs as $tab) : ?>
+            <li>
+              <a href="#<?= sanitize_title($tab['title']); ?>"><?= $tab['title']; ?></a>
+            </li>
+          <?php
+          endforeach; ?>
+        </ul>
       </div>
     </div>
-  </section>
+    <ul class="tabs">
+      <li idz="<?= sanitize_title($t); ?>">
+        <section class="init-main">
+          <div class="container row">
+            <div class="col-md-4">
+              <?= _sw_img(get_post_meta(get_the_ID(), '_init-side', true), 'standard', true); ?>
+            </div>
+            <div class="col-md-8 card-container">
+              <?php
+              if (have_posts()) : while (have_posts()) : the_post();
+                ob_start();
+                the_content();
+                $content = ob_get_contents();
+                ob_end_clean();
+                echo do_shortcode('[card]' . $content . '[/card]');
+              endwhile; endif; ?>
+            </div>
+          </div>
+        </section>
+        <?php
+        $text = get_post_meta(get_the_ID(), '_init-text', true);
+        $img = get_post_meta(get_the_ID(), '_init-img', true);
+        if ($text || $img) : ?>
+          <section class="init-secondary">
+            <div class="container row">
+              <div class="col-xl-7col-lg-8 col-md-7">
+                <?= $text; ?>
+              </div>
+              <div class="col-xl-offset-1 col-lg-4 col-md-5 col-sm-10 col-sm-offset-1">
+                <?= _sw_img($img, 'standard', true); ?>
+              </div>
+            </div>
+          </section>
+        <?php
+        endif; ?>
+      </li>
+      <?php
+      foreach ($tabs as $tab) : ?>
+        <li idz="<?= sanitize_title($tab['title']); ?>">
+          <section>
+            <div class="container row">
+              <div class="col-xs-12">
+                <?= $tab['content']; ?>
+              </div>
+            </div>
+          </section>
+        </li>
+      <?php
+      endforeach; ?>
+    </ul>
   <?php
-  $text = get_post_meta(get_the_ID(), '_init-text', true);
-  $img = get_post_meta(get_the_ID(), '_init-img', true);
-  if ($text || $img) : ?>
-    <section class="init-secondary">
+  else: ?>
+    <section>
       <div class="container row">
-        <div class="col-xl-7col-lg-8 col-md-7">
-          <?= $text; ?>
+        <div class="col-md-4">
+          <?= _sw_img(get_post_meta(get_the_ID(), '_init-side', true), 'standard', true); ?>
         </div>
-        <div class="col-xl-offset-1 col-lg-4 col-md-5 col-sm-10 col-sm-offset-1">
-          <?= _sw_img($img, 'standard', true); ?>
+        <div class="col-md-8 card-container">
+          <?php
+          if (have_posts()) : while (have_posts()) : the_post();
+            ob_start();
+            the_content();
+            $content = ob_get_contents();
+            ob_end_clean();
+            echo do_shortcode('[card]' . $content . '[/card]');
+          endwhile; endif; ?>
         </div>
       </div>
     </section>
-  <?php
+    <?php
+    $text = get_post_meta(get_the_ID(), '_init-text', true);
+    $img = get_post_meta(get_the_ID(), '_init-img', true);
+    if ($text || $img) : ?>
+      <section class="init-secondary">
+        <div class="container row">
+          <div class="col-xl-7col-lg-8 col-md-7">
+            <?= $text; ?>
+          </div>
+          <div class="col-xl-offset-1 col-lg-4 col-md-5 col-sm-10 col-sm-offset-1">
+            <?= _sw_img($img, 'standard', true); ?>
+          </div>
+        </div>
+      </section>
+    <?php
+    endif;
   endif; ?>
   <section class="hero" style="background-image:url(<?= wp_get_attachment_image_src(get_post_meta(get_the_ID(), '_init-kpis-img', true), 'large')[0]; ?>)">
   </section>

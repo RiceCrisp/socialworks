@@ -38,6 +38,50 @@
 }
 [template=initiative-page] {
 @at-root {
+  .tabs-nav-container {
+    border-bottom: 1px solid #eee;
+  }
+  .tabs-nav {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    margin: 0;
+    li {
+      flex: none;
+      margin: 0;
+    }
+    a {
+      @extend .h4;
+      margin: 0;
+      padding: $grid-padding $grid-padding*2;
+      border-top: $grid-padding solid transparent;
+      border-bottom: $grid-padding solid transparent;
+      display: inline-block;
+      &.current {
+        border-bottom-color: $primary;
+      }
+    }
+    .current {
+      display: block;
+    }
+  }
+  .tabs {
+    list-style: none;
+    margin: 0;
+    li {
+      position: relative;
+      visibility: hidden;
+      height: 0;
+      opacity: 0;
+      transition: visibility 0s 0.3s, height 0s 0.3s, opacity 0.3s;
+      &.current {
+        visibility: visible;
+        opacity: 1;
+        height: 100%;
+        transition: visibility 0s 0.3s, height 0s 0.3s, opacity 0.3s 0.3s;
+      }
+    }
+  }
   .init-main {
     .row {
       align-items: center;
