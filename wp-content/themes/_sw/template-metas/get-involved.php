@@ -3,6 +3,7 @@
 function _sw_involved_meta_fields() {
   wp_nonce_field(basename(__FILE__), 'involved-nonce');
   $involved_ctas = get_post_meta(get_the_ID(), '_involved-ctas', true) ?: array('', '');
+  $involved_gallery = get_post_meta(get_the_ID(), '_involved-gallery', true) ?: array('', '', '', '', '', '', '', '', '', '');
   $involved_kpis = get_post_meta(get_the_ID(), '_involved-kpis', true) ?: array('', '', ''); ?>
   <div id="involved-meta-inside" class="custom-meta-inside">
     <ul>
@@ -16,6 +17,31 @@ function _sw_involved_meta_fields() {
                 <li class="col-sm-6">
                   <label for="involved-ctas-<?= $i; ?>">Card <?= $i+1; ?></label>
                   <textarea id="involved-ctas-<?= $i; ?>" name="involved-ctas[<?= $i; ?>]" class="text-editor"><?= $cta; ?></textarea>
+                </li>
+              <?php
+              endforeach; ?>
+            </ul>
+          </fieldset>
+        </div>
+      </li>
+      <li class="row">
+        <div class="col-xs-12">
+          <fieldset>
+            <legend>Gallery</legend>
+            <ul class="sortable-container">
+              <?php
+              foreach ($involved_gallery as $i=>$gallery) : ?>
+                <li class="sortable-item">
+                  <div class="sortable-header">
+                    <span class="dashicons dashicons-move sortable-handle"></span>
+                    <span class="dashicons dashicons-trash sortable-delete"></span>
+                  </div>
+                  <ul class="sortable-content gallery-content">
+                    <li>
+                      <label for="involved-gallery-<?= $i; ?>">Image <?= $i+1; ?></label>
+                      <?= _sw_media_selector('involved-gallery-' . $i, 'involved-gallery[' . $i . ']', $gallery); ?>
+                    </li>
+                  </ul>
                 </li>
               <?php
               endforeach; ?>

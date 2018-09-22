@@ -22,8 +22,19 @@ get_header(); ?>
       endforeach; ?>
     </div>
   </section>
-  <section>
-    <h2>Gallery</h2>
+  <section class=pb-gallery>
+    <div class="container">
+      <div class="row">
+        <?php
+        $gallerys = get_post_meta(get_the_ID(), '_involved-gallery', true);
+        foreach ($gallerys as $gallery) : ?>
+          <div class="col-md-3 col-xs-6 center">
+            <?= _sw_img($gallery, 'standard', true); ?>
+          </div>
+        <?php
+        endforeach; ?>
+      </div>
+    </div>
   </section>
   <section class="involved-kpis">
     <div class="container row">

@@ -35,3 +35,16 @@
     margin-bottom: 0;
   }
 }
+
+.pb-gallery {
+  .row {
+    width: auto;
+    margin-left: -150px;
+    margin-right: -150px;
+  }
+  @include media-breakpoint-down(sm) {
+    [class^=col-]:nth-child(5), [class^=col-]:nth-child(6), [class^=col-]:nth-child(7), [class^=col-]:nth-child(8) {
+      display: none;
+    }
+  }
+}

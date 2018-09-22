@@ -132,10 +132,17 @@ get_header(); ?>
       </div>
     </div>
   </section>
-  <section>
-    <div class="container row">
-      <div class="col-xs-12 center">
-        <h2>Gallery</h2>
+  <section class=pb-gallery>
+    <div class="container">
+      <div class="row">
+        <?php
+        $gallerys = get_post_meta(get_the_ID(), '_init-gallery', true);
+        foreach ($gallerys as $gallery) : ?>
+          <div class="col-md-3 col-xs-6 center">
+            <?= _sw_img($gallery, 'standard', true); ?>
+          </div>
+        <?php
+        endforeach; ?>
       </div>
     </div>
   </section>

@@ -153,8 +153,8 @@ function _sw_admin_enqueue($hook) {
   wp_enqueue_style('jquery-ui-css');
   wp_enqueue_style('wp-color-picker');
 
-  wp_enqueue_editor();
   wp_enqueue_media();
+  wp_enqueue_editor();
   wp_localize_script('admin-js', 'locals', array(
     'ajax_url' => admin_url('admin-ajax.php')
   ));

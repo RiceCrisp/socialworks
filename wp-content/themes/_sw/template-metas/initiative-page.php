@@ -9,6 +9,7 @@ function _sw_init_meta_fields() {
   $init_tabs = get_post_meta(get_the_ID(), '_init-tabs', true) ?: array();
   $init_kpis_img = get_post_meta(get_the_ID(), '_init-kpis-img', true);
   $init_kpis = get_post_meta(get_the_ID(), '_init-kpis', true) ?: array('', '', '');
+  $init_gallery = get_post_meta(get_the_ID(), '_init-gallery', true) ?: array('', '', '', '', '', '', '', '', '', '');
   $init_partners = get_post_meta(get_the_ID(), '_init-partners', true) ?: array(); ?>
   <div id="init-meta-inside" class="custom-meta-inside">
     <ul>
@@ -95,6 +96,31 @@ function _sw_init_meta_fields() {
       <li class="row">
         <div class="col-xs-12">
           <fieldset>
+            <legend>Gallery</legend>
+            <ul class="sortable-container">
+              <?php
+              foreach ($init_gallery as $i=>$gallery) : ?>
+                <li class="sortable-item">
+                  <div class="sortable-header">
+                    <span class="dashicons dashicons-move sortable-handle"></span>
+                    <span class="dashicons dashicons-trash sortable-delete"></span>
+                  </div>
+                  <ul class="sortable-content gallery-content">
+                    <li>
+                      <label for="init-gallery-<?= $i; ?>">Image <?= $i+1; ?></label>
+                      <?= _sw_media_selector('init-gallery-' . $i, 'init-gallery[' . $i . ']', $gallery); ?>
+                    </li>
+                  </ul>
+                </li>
+              <?php
+              endforeach; ?>
+            </ul>
+          </fieldset>
+        </div>
+      </li>
+      <li class="row">
+        <div class="col-xs-12">
+          <fieldset>
             <legend>Partnerships</legend>
             <ul class="sortable-container">
               <?php
@@ -164,6 +190,9 @@ function _sw_save_init_meta($post_id) {
 
   $init_kpis = isset($_POST['init-kpis']) ? $_POST['init-kpis'] : '';
   update_post_meta($post_id, '_init-kpis', $init_kpis);
+
+  $init_gallery = isset($_POST['init-gallery']) ? $_POST['init-gallery'] : '';
+  update_post_meta($post_id, '_init-gallery', $init_gallery);
 
   $init_partners = isset($_POST['init-partners']) ? $_POST['init-partners'] : '';
   update_post_meta($post_id, '_init-partners', $init_partners);
