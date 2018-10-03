@@ -30,7 +30,7 @@ get_header(); ?>
       <li idz="<?= sanitize_title($t); ?>">
         <section class="init-main">
           <div class="container row">
-            <div class="col-md-4">
+            <div class="col-md-4 main-img">
               <?= _sw_img(get_post_meta(get_the_ID(), '_init-side', true), 'standard', true); ?>
             </div>
             <div class="col-md-8 card-container">

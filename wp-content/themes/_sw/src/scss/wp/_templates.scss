@@ -4,10 +4,10 @@
       color: $secondary;
     }
   }
-  .hero {
-    height: 600px;
-  }
   @at-root {
+    .hero {
+      height: 600px;
+    }
     .fp-events {
       margin-top: -$section-padding*3;
       h2 {
@@ -43,6 +43,7 @@
 @at-root {
   .tabs-nav-container {
     border-bottom: 1px solid #eee;
+    overflow-x: auto;
   }
   .tabs-nav {
     display: flex;
@@ -72,6 +73,7 @@
     list-style: none;
     margin: 0;
     li {
+      margin: 0;
       position: relative;
       visibility: hidden;
       height: 0;
@@ -90,7 +92,13 @@
       align-items: center;
       .thumbnail-container {
         margin-right: -100px;
+        @include media-breakpoint-down(sm) {
+          margin-right: 0;
+        }
       }
+    }
+    .main-img {
+
     }
     .card {
       .card-content {
