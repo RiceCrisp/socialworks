@@ -51,7 +51,7 @@ get_header(); ?>
       <?php
       endforeach; ?>
       <div class="col-xs-12 center">
-        <a href="#" class="btn">All Events</a>
+        <a href="/events/" class="btn">All Events</a>
       </div>
     </div>
   </section>
@@ -73,21 +73,23 @@ get_header(); ?>
       <?php
       endforeach; ?>
       <div class="col-xs-12 center">
-        <a href="#" class="btn">See All News</a>
+        <a href="/news/" class="btn">See All News</a>
       </div>
     </div>
   </section>
-  <section>
-    <div class="container row">
-      <div class="col-xl-8 col-xl-offset-2 col-lg-10 col-lg-offset-1 center">
-        <h2>Support CPS</h2>
-        <p>For every 100K donated, SocialWorks will donate 10K to a school of our choosing. Your donations have helped provide children with the resources they deserve.</p>
-        <a href="#" class="btn">Donate Now</a>
-        <a href="#" class="btn-alt">Learn More</a>
+  <?php
+  $cta_1 = get_post_meta(get_the_ID(), '_fp-cta-1', true);
+  if ($cta_1) : ?>
+    <section>
+      <div class="container row">
+        <div class="col-xl-8 col-xl-offset-2 col-lg-10 col-lg-offset-1 center">
+          <?= $cta_1; ?>
+        </div>
       </div>
-    </div>
-  </section>
-  <section class="map orange">
+    </section>
+  <?php
+  endif; ?>
+  <section class="fp-map orange">
     <div class="row no-padding">
       <div class="col-md-4 kpi">
         <p><span class="big">22</span><br />Schools Affected</p>
@@ -123,11 +125,6 @@ get_header(); ?>
       endforeach; ?>
     </div>
   </section>
-  <?php
-  // get_template_part('template-parts/banner');
-  // if (have_posts()) : while (have_posts()) : the_post();
-  //   get_template_part('template-parts/content', get_post_type());
-  // endwhile; endif; ?>
 </main>
 
 <?php get_footer(); ?>

@@ -19,7 +19,7 @@ function checkHash() {
     document.querySelector('.tabs li:first-child').classList.add('current');
   }
 }
-if (tabs) {
+if (tabs.length) {
   window.addEventListener('hashchange', function(e) {
     checkHash();
   });

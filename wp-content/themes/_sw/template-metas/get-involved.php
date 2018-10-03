@@ -95,6 +95,9 @@ function _sw_save_involved_meta($post_id) {
   $involved_ctas = isset($_POST['involved-ctas']) ? $_POST['involved-ctas'] : '';
   update_post_meta($post_id, '_involved-ctas', $involved_ctas);
 
+  $involved_gallery = isset($_POST['involved-gallery']) ? $_POST['involved-gallery'] : '';
+  update_post_meta($post_id, '_involved-gallery', $involved_gallery);
+
   $involved_kpis = isset($_POST['involved-kpis']) ? $_POST['involved-kpis'] : '';
   update_post_meta($post_id, '_involved-kpis', $involved_kpis);
 }

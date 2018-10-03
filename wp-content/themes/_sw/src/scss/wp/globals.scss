@@ -506,6 +506,9 @@ video.no-fullscreen {
 }
 .google-map {
   .map-info-window {
+    *:last-child {
+      margin-bottom: 0;
+    }
     p {
       color: $text-color;
     }

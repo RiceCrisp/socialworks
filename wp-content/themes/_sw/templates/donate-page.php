@@ -17,7 +17,7 @@ get_header(); ?>
                 the_content();
               endwhile; endif; ?>
             </div>
-            <div class="col-xl-4 col-xl-offset-1 col-lg-5 col-md-8 col-md-offset-2 donate-col">
+            <div class="col-xl-4 col-xl-offset-1 col-lg-5 col-lg-offset-0 col-md-8 col-md-offset-2 donate-col">
               <?= get_post_meta(get_the_ID(), '_donate-text', true); ?>
             </div>
           </div>
