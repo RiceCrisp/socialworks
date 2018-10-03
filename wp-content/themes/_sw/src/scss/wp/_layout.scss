@@ -11,15 +11,18 @@
   }
   .page-title {
     color: #fff;
-    margin: 0 0 1em;
+    margin: 0;
   }
   .page-subtitle {
     color: #fff;
-    margin: 0;
+    *:last-child {
+      margin-bottom: 0;
+    }
     .btn {
       @extend .btn-alt;
       border-color: #fff;
       color: #fff;
+      margin-top: $default-margin;
       &:hover {
         background-color: #fff;
         color: $primary;

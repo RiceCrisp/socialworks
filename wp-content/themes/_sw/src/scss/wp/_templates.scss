@@ -141,7 +141,7 @@
   .page-header:after {
     display: none;
   }
-  .page-title, .page-subtitle {
+  .page-title, .page-subtitle * {
     color: #ff006e;
   }
   .card-content {
