@@ -138,6 +138,12 @@
 }
 
 [template="get-involved"] {
+  .page-header:after {
+    display: none;
+  }
+  .page-title, .page-subtitle {
+    color: #ff006e;
+  }
   .card-content {
     text-align: center;
     img {
