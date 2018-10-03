@@ -90,15 +90,12 @@
   .init-main {
     .row {
       align-items: center;
-      .thumbnail-container {
-        margin-right: -100px;
-        @include media-breakpoint-down(sm) {
-          margin-right: 0;
-        }
-      }
     }
     .main-img {
-
+      margin-right: -100px;
+      @include media-breakpoint-down(sm) {
+        margin-right: 0;
+      }
     }
     .card {
       .card-content {
@@ -128,6 +125,9 @@
         margin: 0;
       }
     }
+  }
+  .init-gallery {
+    margin-top: 0;
   }
   .init-partners {
     .thumbnail-container {

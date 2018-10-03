@@ -9,7 +9,7 @@ function _sw_init_meta_fields() {
   $init_tabs = get_post_meta(get_the_ID(), '_init-tabs', true) ?: array();
   $init_kpis_img = get_post_meta(get_the_ID(), '_init-kpis-img', true);
   $init_kpis = get_post_meta(get_the_ID(), '_init-kpis', true) ?: array('', '', '');
-  $init_gallery = get_post_meta(get_the_ID(), '_init-gallery', true) ?: array('', '', '', '', '', '', '', '', '', '');
+  $init_gallery = get_post_meta(get_the_ID(), '_init-gallery', true) ?: array('', '', '', '', '', '', '', '');
   $init_partners = get_post_meta(get_the_ID(), '_init-partners', true) ?: array(); ?>
   <div id="init-meta-inside" class="custom-meta-inside">
     <ul>

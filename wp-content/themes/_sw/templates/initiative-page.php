@@ -78,9 +78,9 @@ get_header(); ?>
     </ul>
   <?php
   else: ?>
-    <section>
+    <section class="init-main">
       <div class="container row">
-        <div class="col-md-4">
+        <div class="col-md-4 main-img">
           <?= _sw_img(get_post_meta(get_the_ID(), '_init-side', true), 'standard', true); ?>
         </div>
         <div class="col-md-8 card-container">
@@ -132,7 +132,7 @@ get_header(); ?>
       </div>
     </div>
   </section>
-  <section class=pb-gallery>
+  <section class="pb-gallery init-gallery">
     <div class="container">
       <div class="row">
         <?php
