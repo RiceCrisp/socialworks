@@ -109,7 +109,7 @@ get_header(); ?>
       </div>
     </div>
   </section>
-  <section>
+  <section class="fp-social">
     <div class="container row">
       <div class="col-xs-12 center">
         <h2>@socialworks_chi</h2>

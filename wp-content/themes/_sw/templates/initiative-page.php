@@ -177,7 +177,7 @@ get_header(); ?>
       $partners = get_post_meta(get_the_ID(), '_init-partners', true) ?: array();
       foreach ($partners as $partner) : ?>
         <div class="col-lg-4 col-md-6 center">
-          <?= _sw_img($partner, 'thumbnail', true); ?>
+          <?= _sw_img($partner, 'standard', true); ?>
         </div>
       <?php
       endforeach; ?>

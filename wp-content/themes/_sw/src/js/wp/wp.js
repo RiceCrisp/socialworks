@@ -281,64 +281,64 @@ function onScreen(el, offset) {
   }
 
   // Replace select elements with more customizable unordered list
-  var selects = document.querySelectorAll('select');
-  for (i = 0; i < selects.length; i++) {
-    var list = '';
-    var hidden = '';
-    var visible = '';
-    var options = selects[i].querySelectorAll('option');
-    for (ii = 0; ii < options.length; ii++) {
-      var selected = '';
-      if (options[ii].selected) {
-        hidden = options[ii].value;
-        visible = options[ii].text;
-        selected = ' class="selected"';
-      }
-      list += '<li' + selected + ' value="' + options[ii].value + '">' + options[ii].text + '</li>';
-    }
-    var id = selects[i].getAttribute('id') ? 'id="' + selects[i].getAttribute('id') + '"' : '';
-    var name = selects[i].getAttribute('name') ? 'name="' + selects[i].getAttribute('name') + '"' : '';
-    selects[i].insertAdjacentHTML('afterend', '<div class="select"><input ' + id + ' ' + name + ' value="' + hidden + '" type="hidden" /><div><span>' + visible + '</span><svg><use xlink:href="/wp-content/themes/_sw/template-parts/sprites.svg#arrow-down"></use></svg></div><ul>' + list + '</ul></div>');
-    selects[i].parentNode.removeChild(selects[i]);
-  }
-  document.addEventListener('click', function(event) {
-    // If we click in the select div
-    var div = checkParents(event.target, '.select');
-    if (div) {
-      if (!div.classList.contains('open')) {
-        var options = document.querySelectorAll('.select');
-        for (i = 0; i < options.length; i++) {
-          options[i].classList.remove('open');
-        }
-        div.classList.add('open');
-      }
-      else {
-        div.classList.remove('open');
-      }
-    }
-    // If we click on the list
-    var li = checkParents(event.target, '.select li');
-    if (li) {
-      var div = checkParents(li, '.select');
-      for (i = 0; i < li.parentNode.children.length; i++) {
-        li.parentNode.children[i].classList.remove('selected');
-      }
-      li.classList.add('selected');
-      div.querySelector('input[type=hidden]').value = li.getAttribute('value');
-      var evt = document.createEvent('HTMLEvents');
-      evt.initEvent('change', true, true);
-      div.querySelector('input[type=hidden]').dispatchEvent(evt);
-      div.querySelector('span').innerHTML = li.innerHTML;
-      li.parentNode.parentNode.classList.remove('open');
-    }
-    // If we click anywhere that's not the select div
-    if (!checkParents(event.target, '.select')) {
-      var options = document.querySelectorAll('.select');
-      for (i = 0; i < options.length; i++) {
-        options[i].classList.remove('open');
-      }
-    }
-  });
+  // var selects = document.querySelectorAll('select');
+  // for (i = 0; i < selects.length; i++) {
+  //   var list = '';
+  //   var hidden = '';
+  //   var visible = '';
+  //   var options = selects[i].querySelectorAll('option');
+  //   for (ii = 0; ii < options.length; ii++) {
+  //     var selected = '';
+  //     if (options[ii].selected) {
+  //       hidden = options[ii].value;
+  //       visible = options[ii].text;
+  //       selected = ' class="selected"';
+  //     }
+  //     list += '<li' + selected + ' value="' + options[ii].value + '">' + options[ii].text + '</li>';
+  //   }
+  //   var id = selects[i].getAttribute('id') ? 'id="' + selects[i].getAttribute('id') + '"' : '';
+  //   var name = selects[i].getAttribute('name') ? 'name="' + selects[i].getAttribute('name') + '"' : '';
+  //   selects[i].insertAdjacentHTML('afterend', '<div class="select"><input ' + id + ' ' + name + ' value="' + hidden + '" type="hidden" /><div><span>' + visible + '</span><svg><use xlink:href="/wp-content/themes/_sw/template-parts/sprites.svg#arrow-down"></use></svg></div><ul>' + list + '</ul></div>');
+  //   selects[i].parentNode.removeChild(selects[i]);
+  // }
+  // document.addEventListener('click', function(event) {
+  //   // If we click in the select div
+  //   var div = checkParents(event.target, '.select');
+  //   if (div) {
+  //     if (!div.classList.contains('open')) {
+  //       var options = document.querySelectorAll('.select');
+  //       for (i = 0; i < options.length; i++) {
+  //         options[i].classList.remove('open');
+  //       }
+  //       div.classList.add('open');
+  //     }
+  //     else {
+  //       div.classList.remove('open');
+  //     }
+  //   }
+  //   // If we click on the list
+  //   var li = checkParents(event.target, '.select li');
+  //   if (li) {
+  //     var div = checkParents(li, '.select');
+  //     for (i = 0; i < li.parentNode.children.length; i++) {
+  //       li.parentNode.children[i].classList.remove('selected');
+  //     }
+  //     li.classList.add('selected');
+  //     div.querySelector('input[type=hidden]').value = li.getAttribute('value');
+  //     var evt = document.createEvent('HTMLEvents');
+  //     evt.initEvent('change', true, true);
+  //     div.querySelector('input[type=hidden]').dispatchEvent(evt);
+  //     div.querySelector('span').innerHTML = li.innerHTML;
+  //     li.parentNode.parentNode.classList.remove('open');
+  //   }
+  //   // If we click anywhere that's not the select div
+  //   if (!checkParents(event.target, '.select')) {
+  //     var options = document.querySelectorAll('.select');
+  //     for (i = 0; i < options.length; i++) {
+  //       options[i].classList.remove('open');
+  //     }
+  //   }
+  // });
 
   // Lazy load
   var lazys = document.querySelectorAll('.lazy-load[data-src]:not([src])');

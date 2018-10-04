@@ -37,6 +37,11 @@
         min-height: 300px;
       }
     }
+    .fp-social {
+      .thumbnail-container {
+        margin-top: $default-margin;
+      }
+    }
   }
 }
 [template=initiative-page] {
@@ -130,6 +135,9 @@
     margin-top: 0;
   }
   .init-partners {
+    .row {
+      align-items: center;
+    }
     .thumbnail-container {
       display: inline-block;
     }
@@ -189,6 +197,16 @@
     @include media-breakpoint-down(xs) {
       padding: $grid-padding;
     }
+  }
+}
+}
+
+[template="gallery"] {
+@at-root {
+  #gallery-filters {
+    margin: $section-padding 0 (-$section-padding/2) 0;
+    position: relative;
+    z-index: 2;
   }
 }
 }

@@ -106,6 +106,7 @@ form {
 }
 
 label {
+  display: inline-block;
   margin: 0 0 5px;
 }
 
@@ -529,4 +530,13 @@ video.no-fullscreen {
 .subhead {
   font-size: rem(12);
   font-weight: $bold;
+}
+
+form [id*=dob] .rightField {
+  display: flex;
+  align-items: center;
+}
+
+form [id*=dob] .rightField input {
+  margin: 0;
 }
