@@ -48,13 +48,16 @@
 @at-root {
   .tabs-nav-container {
     border-bottom: 1px solid #eee;
-    overflow-x: auto;
   }
   .tabs-nav {
     display: flex;
     list-style: none;
     justify-content: center;
     margin: 0;
+    overflow-x: auto;
+    @include media-breakpoint-down(sm) {
+      justify-content: flex-start;
+    }
     li {
       flex: none;
       margin: 0;
