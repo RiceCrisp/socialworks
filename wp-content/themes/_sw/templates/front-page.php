@@ -34,7 +34,7 @@ get_header(); ?>
   </section>
   <section class="fp-events">
     <?php
-    $events = get_posts(array('post_type'=>'event', 'post_status'=>'publish', 'posts_per_page'=>2)); ?>
+    $events = get_posts(array('post_type'=>'event', 'post_status'=>'publish', 'orderby'=>'meta_value_num', 'meta_key'=>'_event-sortable-start', 'posts_per_page'=>2)); ?>
     <div class="container row">
       <div class="col-xs-12 center">
         <h2>SocialWorks Events</h2>

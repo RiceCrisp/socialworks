@@ -44,7 +44,7 @@
         <h2>Upcoming Events</h2>
       </div>
       <?php
-      $events = get_posts(array('post_type'=>'event', 'post_status'=>'publish', 'posts_per_page'=>2));
+      $events = get_posts(array('post_type'=>'event', 'post_status'=>'publish', 'orderby'=>'meta_value_num', 'meta_key'=>'_event-sortable-start', 'posts_per_page'=>2));
       foreach ($events as $event) : ?>
         <div class="col-md-6 card-container">
           <?= do_shortcode('[card class="link-container" img="' . $event->ID . '"]

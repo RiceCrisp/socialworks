@@ -50,6 +50,10 @@ get_header(); ?>
   </form> -->
   <section>
     <?php
+    if ($p_type == 'event') {
+      $args['orderby'] = 'meta_value_num';
+      $args['meta_key'] = '_event-sortable-start';
+    }
     $args = array(
       'post_type' => $p_type,
       'post_status' => 'publish',
