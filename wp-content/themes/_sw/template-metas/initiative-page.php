@@ -9,6 +9,8 @@ function _sw_init_meta_fields() {
   $init_tabs = get_post_meta(get_the_ID(), '_init-tabs', true) ?: array();
   $init_kpis_img = get_post_meta(get_the_ID(), '_init-kpis-img', true);
   $init_kpis = get_post_meta(get_the_ID(), '_init-kpis', true) ?: array('', '', '');
+  $init_kpis_btn_text = get_post_meta(get_the_ID(), '_init-kpis-btn-text', true);
+  $init_kpis_btn_url = get_post_meta(get_the_ID(), '_init-kpis-btn-url', true);
   $init_gallery = get_post_meta(get_the_ID(), '_init-gallery', true) ?: array('', '', '', '', '', '', '', '');
   $init_partners = get_post_meta(get_the_ID(), '_init-partners', true) ?: array(); ?>
   <div id="init-meta-inside" class="custom-meta-inside">
@@ -91,6 +93,16 @@ function _sw_init_meta_fields() {
               endforeach; ?>
             </ul>
           </fieldset>
+        </div>
+      </li>
+      <li class="row">
+        <div class="col-sm-6">
+          <label for="init-kpis-btn-text">KPI Button Text</label>
+          <input id="init-kpis-btn-text" name="init-kpis-btn-text" type="text" value="<?= $init_kpis_btn_text; ?>" />
+        </div>
+        <div class="col-sm-6">
+          <label for="init-kpis-btn-url">KPI Button URL</label>
+          <input id="init-kpis-btn-url" name="init-kpis-btn-url" type="text" value="<?= $init_kpis_btn_url; ?>" />
         </div>
       </li>
       <li class="row">
@@ -190,6 +202,12 @@ function _sw_save_init_meta($post_id) {
 
   $init_kpis = isset($_POST['init-kpis']) ? $_POST['init-kpis'] : '';
   update_post_meta($post_id, '_init-kpis', $init_kpis);
+
+  $init_kpis_btn_text = isset($_POST['init-kpis-btn-text']) ? $_POST['init-kpis-btn-text'] : '';
+  update_post_meta($post_id, '_init-kpis-btn-text', $init_kpis_btn_text);
+
+  $init_kpis_btn_url = isset($_POST['init-kpis-btn-url']) ? $_POST['init-kpis-btn-url'] : '';
+  update_post_meta($post_id, '_init-kpis-btn-url', $init_kpis_btn_url);
 
   $init_gallery = isset($_POST['init-gallery']) ? $_POST['init-gallery'] : '';
   update_post_meta($post_id, '_init-gallery', $init_gallery);

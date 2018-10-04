@@ -126,10 +126,15 @@ get_header(); ?>
           </div>
         </div>
       <?php
-      endforeach; ?>
-      <div class="col-xs-12 center">
-        <a href="#" class="btn">Register for OpenMike</a>
-      </div>
+      endforeach;
+      $btn_text = get_post_meta(get_the_ID(), '_init-kpis-btn-text', true);
+      $btn_url = get_post_meta(get_the_ID(), '_init-kpis-btn-url', true);
+      if ($btn_text && $btn_url) : ?>
+        <div class="col-xs-12 center">
+          <a href="<?= $btn_url; ?>" class="btn"><?= $btn_text; ?></a>
+        </div>
+      <?php
+      endif; ?>
     </div>
   </section>
   <section class="pb-gallery init-gallery">
@@ -164,7 +169,7 @@ get_header(); ?>
       <?php
       endforeach; ?>
       <div class="col-xs-12 center">
-        <a href="#" class="btn">See All News</a>
+        <a href="/news/" class="btn">See All News</a>
       </div>
     </div>
   </section>

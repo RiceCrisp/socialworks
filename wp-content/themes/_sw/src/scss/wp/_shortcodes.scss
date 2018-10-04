@@ -37,6 +37,9 @@
 }
 
 .pb-gallery {
+  .thumbnail-container {
+    margin-bottom: $default-margin;
+  }
   .row {
     width: auto;
     margin-left: -150px;

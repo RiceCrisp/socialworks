@@ -25,9 +25,13 @@
           </p>
           <b>Location</b>
           <?= get_post_meta(get_the_ID(), '_event-location', true); ?>
-          <a href="#" class="btn">Get Tickets</a>
+          <?php
+          $tickets = get_post_meta(get_the_ID() '_event-tickets', true);
+          if ($tickets) {
+            echo '<a href="' . $register . '" class="btn">Get Tickets</a>';
+          } ?>
           <div class="google-map">
-            <div class="map-canvas"></div>
+            <div class="map-canvas" zoom="7"></div>
             <input class="location" type="hidden" value="<?= get_post_meta(get_the_ID(), '_event-lat', true); ?>~%~%~<?= get_post_meta(get_the_ID(), '_event-lng', true); ?>~%~%~<?= get_post_meta(get_the_ID(), '_event-location', true); ?>" />
           </div>
         </div>

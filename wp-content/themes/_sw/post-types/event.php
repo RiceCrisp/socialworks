@@ -58,6 +58,7 @@ function _sw_event_meta_fields() {
   $sortable_end = get_post_meta(get_the_ID(), '_event-sortable-end', true);
   $json_start = get_post_meta(get_the_ID(), '_event-json-start', true);
   $json_end = get_post_meta(get_the_ID(), '_event-json-end', true);
+  $tickets = get_post_meta(get_the_ID(), '_event-tickets', true);
   $lat = get_post_meta(get_the_ID(), '_event-lat', true);
   $lng = get_post_meta(get_the_ID(), '_event-lng', true);
   $location = get_post_meta(get_the_ID(), '_event-location', true); ?>
@@ -99,13 +100,19 @@ function _sw_event_meta_fields() {
       </li>
     </li>
     <li class="row">
+      <div class="col-xs-12">
+        <label for="event-tickets">Tickets URL</label>
+        <input id="event-tickets" name="event-tickets" type="text" value="<?= $tickets; ?>" />
+      </div>
+    </li>
+    <li class="row">
       <div class="col-xs-6">
         <label for="event-lat">Latitude</label>
-        <input id="event-lat" name="event-lat" type="number" value="<?= $lat; ?>" />
+        <input id="event-lat" name="event-lat" type="number" step="any" value="<?= $lat; ?>" />
       </div>
       <div class="col-xs-6">
         <label for="event-lng">Longitude</label>
-        <input id="event-lng" name="event-lng" type="number" value="<?= $lng; ?>" />
+        <input id="event-lng" name="event-lng" type="number" step="any" value="<?= $lng; ?>" />
       </div>
       <div class="col-xs-12">
         <label for="event-location">Location</label>
@@ -163,6 +170,9 @@ function _sw_save_event_meta($post_id) {
 
   $event_json_end = isset($_POST['event-json-end']) ? $_POST['event-json-end'] : '';
   update_post_meta($post_id, '_event-json-end', $event_json_end);
+
+  $event_tickets = isset($_POST['event-tickets']) ? $_POST['event-tickets'] : '';
+  update_post_meta($post_id, '_event-tickets', $event_tickets);
 
   $event_lat = isset($_POST['event-lat']) ? $_POST['event-lat'] : '';
   update_post_meta($post_id, '_event-lat', $event_lat);

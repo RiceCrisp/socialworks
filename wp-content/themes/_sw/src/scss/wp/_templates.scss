@@ -132,13 +132,15 @@
     }
   }
   .init-gallery {
-    margin-top: 0;
+    padding-top: 0;
   }
   .init-partners {
     .row {
       align-items: center;
     }
     .thumbnail-container {
+      max-width: 250px;
+      margin: 0 auto;
       display: inline-block;
     }
   }
