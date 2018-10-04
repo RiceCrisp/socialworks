@@ -525,6 +525,14 @@ video.no-fullscreen {
   p, h2, a, span {
     color: #fff;
   }
+  .card {
+    a {
+      color: $text-color;
+    }
+    p, h2, span {
+      color: $text-color;
+    }
+  }
 }
 
 .subhead {
