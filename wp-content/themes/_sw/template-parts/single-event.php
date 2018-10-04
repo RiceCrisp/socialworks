@@ -26,9 +26,9 @@
           <b>Location</b>
           <?= get_post_meta(get_the_ID(), '_event-location', true); ?>
           <?php
-          $tickets = get_post_meta(get_the_ID() '_event-tickets', true);
+          $tickets = get_post_meta(get_the_ID(), '_event-tickets', true);
           if ($tickets) {
-            echo '<a href="' . $register . '" class="btn">Get Tickets</a>';
+            echo '<a href="' . $tickets . '" class="btn">Get Tickets</a>';
           } ?>
           <div class="google-map">
             <div class="map-canvas" zoom="7"></div>
