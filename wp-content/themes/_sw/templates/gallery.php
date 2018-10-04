@@ -50,16 +50,16 @@ get_header(); ?>
   </form> -->
   <section>
     <?php
-    if ($p_type == 'event') {
-      $args['orderby'] = 'meta_value_num';
-      $args['meta_key'] = '_event-sortable-start';
-    }
     $args = array(
       'post_type' => $p_type,
       'post_status' => 'publish',
       'paged' => $paged,
       's' => $s
     );
+    if ($p_type == 'event') {
+      $args['orderby'] = 'meta_value_num';
+      $args['meta_key'] = '_event-sortable-start';
+    }
     $paged = get_query_var('paged') ? get_query_var('paged') : 1;
     $loop = new WP_Query($args);
     if ($loop->have_posts()) : ?>

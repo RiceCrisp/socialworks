@@ -14,9 +14,11 @@
     margin: 0;
   }
   .page-subtitle {
-    color: #fff;
-    *:last-child {
-      margin-bottom: 0;
+    * {
+      color: #fff;
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
     .btn {
       @extend .btn-alt;
