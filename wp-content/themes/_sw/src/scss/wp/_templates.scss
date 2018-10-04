@@ -113,9 +113,9 @@
     .row {
       align-items: center;
     }
-    .thumbnail-container, img {
-      border-radius: 50%;
-    }
+    // .thumbnail-container, img {
+    //   border-radius: 50%;
+    // }
   }
   .init-kpis {
     margin-top: -$section-padding*3;
@@ -175,9 +175,17 @@
       margin-top: $grid-padding;
     }
   }
+  .pb-gallery {
+    padding: 0;
+  }
 @at-root {
   .involved-ctas {
     margin-top: -$section-padding*1.5;
+  }
+  .involved-kpis {
+    .card-content {
+      justify-content: flex-start;
+    }
   }
 }
 }
