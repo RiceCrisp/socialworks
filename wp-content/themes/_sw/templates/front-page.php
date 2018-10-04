@@ -92,9 +92,9 @@ get_header(); ?>
   <section class="fp-map orange">
     <div class="row no-padding">
       <div class="col-md-4 kpi">
-        <p><span class="big">22</span><br />Schools Affected</p>
+        <p><span class="big">40</span><br />Schools Affected</p>
         <hr />
-        <p><span class="big">$220K</span><br />Money Donated</p>
+        <p><span class="big">$4.2M</span><br />Money Donated</p>
       </div>
       <div class="col-md-8 no-padding">
         <div class="google-map">

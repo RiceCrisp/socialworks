@@ -1,15 +1,7 @@
-<div class="col col-sm-3 col-xs-12">
-  <div id="post-<?php the_ID(); ?>" <?php post_class('archive-grid' . ' ' . get_post_type()); ?>>
-  <?php
-  if (has_post_thumbnail()) : ?>
-    <div class="img" style="background-image:url(<?= the_post_thumbnail_url('large'); ?>)"></div>
-  <?php
-  endif; ?>
-    <div class="content">
-      <h2><a href="<?= get_permalink(); ?>"><?= get_the_title(); ?></a></h2>
-      <?= _sw_taxonomies(); ?>
-      <span class="event-date"><?= get_post_meta(get_the_ID(), '_event-start-date', true); ?></span>
-      <?= the_excerpt(); ?>
-    </div>
-  </div>
+<div class="col-md-4 card-container">
+  <?= do_shortcode('[card class="link-container" img="' . get_the_ID() . '"]
+    <p class="subhead">' . date("F d, Y", strtotime(get_post_meta(get_the_ID(), '_event-start-date', true))) . '</p>
+    <a href="' . get_permalink(get_the_ID()) . '"><h3>' . get_the_title() . '</h3></a>
+    <p>' . _sw_excerpt(get_the_ID()) . '</p>
+  [/card]'); ?>
 </div>
