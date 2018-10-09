@@ -13,7 +13,7 @@ get_header(); ?>
         'post_type' => 'page',
         'post_parent' => get_page_by_title('Initiatives')->ID,
         'post_status' => 'publish',
-        'posts_per_page' => -1
+        'posts_per_page' => 4
       ));
       foreach ($inits as $init) : ?>
         <div class="col-md-6 card-container">
