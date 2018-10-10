@@ -7,35 +7,44 @@ get_header(); ?>
   <?php
   get_template_part('template-parts/banner');
   $s = isset($_GET['search']) ? $_GET['search'] : '';
-  $filters = isset($_GET['filters']) ? $_GET['filters'] : array();
+  $filter = isset($_GET['filter']) ? $_GET['filter'] : '';
   $p_type = get_post_meta(get_the_ID(), '_gallery-type', true);
   $tax = get_post_meta(get_the_ID(), '_gallery-tax', true); ?>
-  <!-- <form id="gallery-filters" action="" method="GET">
+  <form id="gallery-filters" action="#filtered" method="GET">
+    <div id="filtered"></div>
     <div class="container row">
       <div class="col-lg-4 col-md-6">
         <?php
         if ($tax == 'year') : ?>
           <label for="filter">Year</label>
           <select id="filter" name="filter">
-            <option value="">No Filter</option>
-            <?php wp_get_archives(array('type'=>'yearly', 'format'=>'option', 'post_type'=>$p_type)); ?>
+            <option value="" <?= !$filter ? 'selected' : ''; ?>>All</option>
+            <?php
+            $years = wp_get_archives(array('type'=>'yearly', 'format'=>'custom', 'echo'=>0, 'post_type'=>$p_type));
+            $years = explode('</a>', $years);
+            array_pop($years);
+            foreach ($years as $i=>$year) :
+              $year = substr($year, -4); ?>
+              <option value="<?= $year; ?>" <?= $filter==$year ? 'selected' : ''; ?>><?= $year; ?></option>
+            <?php
+            endforeach; ?>
           </select>
         <?php
         elseif ($tax == 'event') : ?>
           <label for="filter">Timeline</label>
           <select id="filter" name="filter">
-            <option value="upcoming">Upcoming</option>
-            <option value="past">Past</option>
+            <option value="upcoming" <?= !$filter || $filter=='upcoming' ? 'selected' : ''; ?>>Upcoming</option>
+            <option value="past" <?= $filter=='past' ? 'selected' : ''; ?>>Past</option>
           </select>
         <?php
         else:
           $terms = get_terms(array('taxonomy' => $tax)); ?>
           <label for="filter"><?= get_taxonomy($tax)->label; ?></label>
           <select id="filter" name="filter">
-            <option value="">No Filter</option>
+            <option value="" <?= !$filter ? 'selected' : ''; ?>>No Filter</option>
             <?php
             foreach ($terms as $i=>$term) : ?>
-              <option value="<?= $term->slug; ?>"><?= $term->name; ?></option>
+              <option value="<?= $term->slug; ?>" <?= $filter==$term->slug ? 'selected' : ''; ?>><?= $term->name; ?></option>
             <?php
             endforeach; ?>
           </select>
@@ -47,7 +56,7 @@ get_header(); ?>
         <input id="search" name="search" type="text" value="<?= $s; ?>" />
       </div>
     </div>
-  </form> -->
+  </form>
   <section>
     <?php
     $args = array(
@@ -59,6 +68,33 @@ get_header(); ?>
     if ($p_type == 'event') {
       $args['orderby'] = 'meta_value_num';
       $args['meta_key'] = '_event-sortable-start';
+    }
+    if ($tax == 'year') {
+      $args['year'] = $filter;
+    }
+    else if ($tax == 'event') {
+      $args['meta_query'] = array(
+        'relation' => 'OR'
+      );
+      if (!$filter || $filter=='upcoming') {
+        array_push($args['meta_query'],
+          array(
+            'key' => '_event-sortable-start',
+            'value' => date('YmdHi'),
+            'compare' => '>='
+          )
+        );
+        $args['order'] = 'ASC';
+      }
+      if ($filter=='past') {
+        array_push($args['meta_query'],
+          array(
+            'key' => '_event-sortable-start',
+            'value' => date('YmdHi'),
+            'compare' => '<'
+          )
+        );
+      }
     }
     $paged = get_query_var('paged') ? get_query_var('paged') : 1;
     $loop = new WP_Query($args);

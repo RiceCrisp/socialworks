@@ -6,7 +6,7 @@
   text-align: center;
   @include overlay(rgba(#000, 0.3));
   @include media-breakpoint-down(md) {
-    padding-top: $header-padding/2 + $menu-height;
+    padding-top: $header-padding/2 + $mobile-menu-height;
     padding-bottom: $header-padding/2;
   }
   .page-title {
@@ -14,11 +14,9 @@
     margin: 0;
   }
   .page-subtitle {
-    * {
-      color: #fff;
-      &:last-child {
-        margin-bottom: 0;
-      }
+    color: #fff;
+    *:last-child {
+      margin-bottom: 0;
     }
     .btn {
       @extend .btn-alt;

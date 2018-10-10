@@ -9,8 +9,8 @@ get_header(); ?>
   $tabs = get_post_meta(get_the_ID(), '_init-tabs', true);
   if ($tabs) : ?>
     <div class="tabs-nav-container">
-      <div class="container row">
-        <ul class="col-xs-12 tabs-nav">
+      <div class="container-fluid row no-padding">
+        <ul class="col-xs-12 tabs-nav no-padding">
           <li>
             <?php
             $t = get_post_meta(get_the_ID(), '_init-title', true); ?>

@@ -1,7 +1,7 @@
 <div class="pre-footer">
   <div class="container row">
     <div class="col-lg-3 col-md-2 relative">
-      <img class="lazy-load left-hands" data-src="/wp-content/uploads/2018/09/hands.png" alt="Hands" />
+      <img class="lazy-load left-hands" data-src="/wp-content/uploads/2018/10/hands-min.png" alt="Hands" />
     </div>
     <div class="col-lg-6 col-md-8 form">
       <h3>Stay Connected with SocialWorks</h3>
@@ -31,7 +31,7 @@
           </form> -->
     </div>
     <div class="col-lg-3 col-md-2 relative">
-      <img class="lazy-load right-hands" data-src="/wp-content/uploads/2018/09/hands.png" alt="Hands" />
+      <img class="lazy-load right-hands" data-src="/wp-content/uploads/2018/10/hands-min.png" alt="Hands" />
     </div>
   </div>
 </div>

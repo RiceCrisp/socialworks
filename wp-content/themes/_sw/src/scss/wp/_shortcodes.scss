@@ -37,6 +37,7 @@
 }
 
 .pb-gallery {
+  overflow-x: hidden;
   .thumbnail-container {
     margin-bottom: $default-margin;
   }
