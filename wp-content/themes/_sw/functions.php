@@ -184,11 +184,22 @@ function _sw_admin_enqueue($hook) {
 add_action('admin_enqueue_scripts', '_sw_admin_enqueue');
 
 // Remove h1 and lower headlines from editor
-function _ws_tiny_mce_formats($init) {
+function _sw_tiny_mce_formats($init) {
   $init['block_formats'] = 'Paragraph=p;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6;Preformatted=pre';
   return $init;
 }
-add_filter('tiny_mce_before_init', '_ws_tiny_mce_formats');
+add_filter('tiny_mce_before_init', '_sw_tiny_mce_formats');
+
+// Remove empty p tags
+function _sw_remove_empty_p($content) {
+  $content = force_balance_tags( $content );
+  $content = preg_replace('/<p><\/p>/', '', $content); //empty
+  $content = preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content); //images
+  return $content;
+}
+add_filter('the_content', '_sw_remove_empty_p', 20, 1);
+remove_filter('the_content', 'wpautop');
+add_filter('the_content', 'wpautop' , 12);
 
 // Register widget areas
 function _sw_register_widget_areas() {
@@ -210,6 +221,12 @@ function _sw_excerpt_length($length) {
   return 35;
 }
 add_filter('excerpt_length', '_sw_excerpt_length', 999);
+
+// Remove custom css from Customizer
+function _sw_remove_customizer_css($wp_customize) {
+  $wp_customize->remove_control('custom_css');
+}
+add_action('customize_register', '_sw_remove_customizer_css');
 
 // Custom post types
 foreach (glob(get_template_directory() . '/post-types/*.php') as $filename) {
