@@ -36,12 +36,18 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 h1, .h1 {
   font-size: rem(36);
   line-height: 1.25em;
+  @include media-breakpoint-down(xs) {
+    font-size: rem(32);
+  }
 }
 
 h2, .h2 {
   font-size: rem(36);
   font-weight: $bold;
   line-height: 1.25em;
+  @include media-breakpoint-down(xs) {
+    font-size: rem(32);
+  }
 }
 
 h3, .h3 {
@@ -62,7 +68,7 @@ h6, .h6 {
 
 a, .a {
   color: $secondary;
-  text-decoration: none;
+  // text-decoration: none;
   transition: 0.3s;
   &:hover {
     color: $secondary-dark;
@@ -347,6 +353,9 @@ svg {
       padding: $card-padding/2;
     }
   }
+  a {
+    text-decoration: none;
+  }
 }
 .card-container {
   margin-bottom: $grid-padding*2;
@@ -505,6 +514,7 @@ video.no-fullscreen {
 
 .google-map, .map-canvas {
   height: 100%;
+  max-width: 100%;
 }
 .google-map {
   .map-info-window {
@@ -548,4 +558,20 @@ form [id*=dob] .rightField {
 
 form [id*=dob] .rightField input {
   margin: 0;
+}
+
+.logo {
+  .st0 {
+    fill: #BD1E2D;
+  }
+  .st1 {
+    fill: #ECB95F;
+  }
+  .st2 {
+    opacity: 0.25;
+    fill: #FFFFFF;
+  }
+  .st3 {
+    fill: #FFFFFF;
+  }
 }

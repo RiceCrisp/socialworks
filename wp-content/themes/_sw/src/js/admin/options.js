@@ -34,7 +34,7 @@ jQuery('.sitemap-options .inline-option .button').on('click', function(e) {
 // SVG Manager
 function checkSVG() {
   var svgs = document.querySelectorAll('.svg-options .sortable-item');
-  for (i = 0; i < svgs.length; i++) {
+  for (var i = 0; i < svgs.length; i++) {
     if (svgs[i].querySelector('[v-model]')) {
       new Vue({
         el: svgs[i],
@@ -191,12 +191,6 @@ jQuery('.redirect-options .add button').on('click', function(e) {
   var container = jQuery(this).closest('.redirect');
   var oldVal = jQuery(this).closest('.redirect').find('.old input').val();
   var newVal = jQuery(this).closest('.redirect').find('.new input').val();
-  // if (oldVal.charAt(0) != '/' || !oldVal.includes('http://') || !oldVal.includes('https://')) {
-  //   oldVal = '/' + oldVal;
-  // }
-  // if (newVal.charAt(0) != '/' || !newVal.includes('http://') || !newVal.includes('https://')) {
-  //   newVal = '/' + newVal;
-  // }
   jQuery(this).closest('.redirect').find('.old input').val('');
   jQuery(this).closest('.redirect').find('.new input').val('');
   jQuery('.sortable-container').prepend('<li class="sortable-item redirect">\
@@ -216,16 +210,10 @@ jQuery('#redirect-import').on('change', function(e) {
   reader.onload = function() {
     try {
       var results = reader.result.split("\n");
-      for (i = 0; i < results.length; i++) {
+      for (var i = 0; i < results.length; i++) {
         var result = results[i].split(',');
         var oldVal = result[0];
         var newVal = result[1];
-        if (oldVal.charAt(0) != '/' || !oldVal.includes('http://') || !oldVal.includes('https://')) {
-          oldVal = '/' + oldVal;
-        }
-        if (newVal.charAt(0) != '/' || !newVal.includes('http://') || !newVal.includes('https://')) {
-          newVal = '/' + newVal;
-        }
         jQuery('.sortable-container').prepend('<li class="sortable-item redirect">\
           <div class="old">\
             <input name="redirects[00][old]" type="text" value="' + oldVal + '" readonly />\

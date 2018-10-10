@@ -8,6 +8,11 @@
     text-align: center;
     padding: 25px;
   }
+  @include media-breakpoint-down(md) {
+    .text {
+      margin-bottom: $section-padding/2;
+    }
+  }
 }
 #event-map {
   height: 300px;

@@ -118,7 +118,7 @@ get_header(); ?>
       <?php
       $imgs = get_post_meta(get_the_ID(), '_fp-social-img', true) ?: array();
       foreach ($imgs as $img) : ?>
-        <div class="col-lg-3 col-md-6">
+        <div class="col-lg-3 col-xs-6">
           <?= _sw_img($img, 'standard', true); ?>
         </div>
       <?php

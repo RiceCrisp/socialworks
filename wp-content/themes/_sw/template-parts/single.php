@@ -1,4 +1,4 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class('event-single'); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
   <?php
   get_template_part('template-parts/banner'); ?>
   <section>

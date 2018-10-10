@@ -69,6 +69,7 @@
       border-top: $grid-padding solid transparent;
       border-bottom: $grid-padding solid transparent;
       display: inline-block;
+      text-decoration: none;
       &.current {
         border-bottom-color: $primary;
       }
@@ -184,6 +185,12 @@
 @at-root {
   .involved-ctas {
     margin-top: -$section-padding*1.5;
+    .card-content {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
   }
   .involved-kpis {
     .card-content {

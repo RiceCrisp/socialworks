@@ -207,11 +207,11 @@ a.tax {
 }
 
 // Remove line breaks on small devices
-@include media-breakpoint-down(xs) {
-  br {
-    content: '';
-  }
-}
+// @include media-breakpoint-down(xs) {
+//   br {
+//     content: '';
+//   }
+// }
 
 // Parallax
 .parallax-container {

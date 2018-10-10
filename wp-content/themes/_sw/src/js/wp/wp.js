@@ -168,7 +168,7 @@ function onScreen(el, offset) {
       var div = document.createElement('div');
       div.classList.add('col-xs-12', 'load-more');
       var btn = document.createElement('button');
-      btn.innerHTML = 'load more +';
+      btn.innerHTML = 'Load More';
       div.appendChild(btn);
       btns[i].appendChild(div);
     }
@@ -187,7 +187,7 @@ function onScreen(el, offset) {
         if ((req.status >= 200 && req.status < 400) && jsonRes.success) {
           if (jsonRes.data) {
             btn.parentNode.insertAdjacentHTML('beforebegin', jsonRes.data.output);
-            btn.innerHTML = 'load more +';
+            btn.innerHTML = 'Load More';
             btn.disabled = false;
             var page = loopContainer.getAttribute('page')
             if (page) {

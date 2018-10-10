@@ -146,8 +146,7 @@ add_filter('comments_open', '_sw_comments');
 function _sw_structured_data() {
   if (!is_singular()) {
     return;
-  }
-  ?>
+  } ?>
   <script type="application/ld+json">
   [
     {
@@ -157,14 +156,12 @@ function _sw_structured_data() {
       "name": "<?= bloginfo('name'); ?>",
       "logo": "<?= wp_get_attachment_image_src(get_theme_mod('custom_logo'), 'full')[0]; ?>",
       <?php
-      if (get_option('site_tel')) : ?>
-        "telephone": "<?= get_option('site_tel'); ?>",
-      <?php
-      endif;
-      if (get_option('theme_email')) : ?>
-        "email": "mailto:<?= get_option('site_email'); ?>",
-      <?php
-      endif;
+      if (get_option('site_tel')) {
+        echo '"telephone": "' . get_option('site_tel') . '",';
+      }
+      if (get_option('theme_email')) {
+        echo '"email": "mailto:' . get_option('site_email') . '",';
+      }
       if (get_option('site_location')) : ?>
         "address": {
           "@type": "PostalAddress",
@@ -231,10 +228,10 @@ function _sw_structured_data() {
         ]
       <?php
       endif; ?>
-    }
+    },
     <?php
     if (get_post_type() == 'post') : ?>
-      ,{
+      {
         "@context": "http://schema.org",
         "@type": "Article",
         "headline": "<?= get_the_title(); ?>",
@@ -246,17 +243,18 @@ function _sw_structured_data() {
         },
         "datePublished": "<?= get_the_date('Y-m-d\TH:i'); ?>",
         "dateModified": "<?= get_the_modified_date('Y-m-d\TH:i'); ?>",
-      }
+      },
     <?php
     endif;
     if (get_post_type() == 'event') : ?>
-      ,{
+      {
         "@context": "http://schema.org",
         "@type": "Event",
         "name": "<?= get_the_title(); ?>",
         "startDate": "<?= get_post_meta(get_the_ID(), '_event-json-start', true); ?>",
         "endDate": "<?= get_post_meta(get_the_ID(), '_event-json-end', true); ?>",
         "image": "<?= get_the_post_thumbnail_url(get_the_id(), 'full'); ?>",
+        <?php
         // "location": {
         //   "@type": "Place",
         //   "name": "<?= get_post_meta(get_the_ID(), '_event-location-name', true); ?>",
@@ -269,19 +267,20 @@ function _sw_structured_data() {
         //     "addressCountry": "<?= get_post_meta(get_the_ID(), '_event-location-country', true); ?>"
         //   }
         // }
-      }
+        ?>
+      },
     <?php
     endif;
     if (get_post_type() == 'job') : ?>
-      ,{
+      {
         "@context": "http://schema.org",
         "@type": "JobPosting",
         "title": "<?= get_the_title(); ?>"
-      }
+      },
     <?php
     endif; ?>
   ]
   </script>
-  <?php
+<?php
 }
 add_action('wp_head', '_sw_structured_data');
