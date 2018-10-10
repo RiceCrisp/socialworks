@@ -9,52 +9,40 @@
     padding-top: $header-padding/2 + $mobile-menu-height;
     padding-bottom: $header-padding/2;
   }
-  @at-root {
-  .page-title {
+}
+.page-title {
+  color: #fff;
+  margin: 0;
+}
+.page-subtitle {
+  p {
+    @extend .h4;
     color: #fff;
-    margin: 0;
-  }
-  .page-subtitle {
-    p {
-      @extend .h4;
-      color: #fff;
-      &:first-child {
-        .btn {
-          margin-top: $default-margin;
-        }
-      }
-    }
-    * {
-      color: #fff;
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-    .btn {
-      @extend .btn-alt;
-      border-color: #fff;
-      color: #fff;
-      &:hover {
-        background-color: #fff;
-        color: $primary;
+    &:first-child {
+      .btn {
+        margin-top: $default-margin;
       }
     }
   }
+  * {
+    color: #fff;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .btn {
+    @extend .btn-alt;
+    border-color: #fff;
+    color: #fff;
+    &:hover {
+      background-color: #fff;
+      color: $primary;
+    }
   }
 }
 main section {
   padding-top: $section-padding;
   padding-bottom: $section-padding;
-}
-main.single {
-  .single-footer {
-    .cat-links {
-      padding: 5px 0 0;
-    }
-    .tags-links {
-      padding: 0 0 5px;
-    }
-  }
 }
 #post-navigation {
   background: $primary-light;
@@ -189,27 +177,27 @@ a.tax {
   &.show {
     opacity: 1;
   }
-  .lightbox-header {
+}
+.lightbox-header {
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 25px;
+  .lightbox-close {
+    cursor: pointer;
+    width: 50px;
     height: 50px;
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 25px;
-    .lightbox-close {
-      cursor: pointer;
-      width: 50px;
-      height: 50px;
-      fill: #fff;
-      transition: 0.3s;
-      stroke-width: 1;
-      padding: 10px;
-      &:hover {
-        fill: #aaa;
-      }
+    fill: #fff;
+    transition: 0.3s;
+    stroke-width: 1;
+    padding: 10px;
+    &:hover {
+      fill: #aaa;
     }
   }
-  .lightbox-content {
-    margin-bottom: 25px;
-  }
+}
+.lightbox-content {
+  margin-bottom: 25px;
 }
 .error-msg {
   margin-top: 20px;
@@ -226,11 +214,11 @@ a.tax {
 // }
 
 // Parallax
-.parallax-container {
-  perspective: 1px;
-  overflow-y: auto;
-  height: 100vh;
-}
-.parallax {
-  transform: translateZ(-0.1px) scale(1.1); // scale = 1 - translateZ
-}
+// .parallax-container {
+//   perspective: 1px;
+//   overflow-y: auto;
+//   height: 100vh;
+// }
+// .parallax {
+//   transform: translateZ(-0.1px) scale(1.1); // scale = 1 - translateZ
+// }
