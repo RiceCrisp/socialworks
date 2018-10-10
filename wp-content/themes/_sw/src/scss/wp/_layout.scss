@@ -9,6 +9,7 @@
     padding-top: $header-padding/2 + $mobile-menu-height;
     padding-bottom: $header-padding/2;
   }
+  @at-root {
   .page-title {
     color: #fff;
     margin: 0;
@@ -38,6 +39,7 @@
         color: $primary;
       }
     }
+  }
   }
 }
 main section {
