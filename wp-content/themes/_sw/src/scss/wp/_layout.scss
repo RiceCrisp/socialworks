@@ -4,7 +4,7 @@
   padding-bottom: $header-padding;
   background-color: $primary-dark;
   text-align: center;
-  @include overlay(rgba(#000, 0.3));
+  @include overlay();
   @include media-breakpoint-down(md) {
     padding-top: $header-padding/2 + $mobile-menu-height;
     padding-bottom: $header-padding/2;
@@ -14,15 +14,25 @@
     margin: 0;
   }
   .page-subtitle {
-    color: #fff;
-    *:last-child {
-      margin-bottom: 0;
+    p {
+      @extend .h4;
+      color: #fff;
+      &:first-child {
+        .btn {
+          margin-top: $default-margin;
+        }
+      }
+    }
+    * {
+      color: #fff;
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
     .btn {
       @extend .btn-alt;
       border-color: #fff;
       color: #fff;
-      margin-top: $default-margin;
       &:hover {
         background-color: #fff;
         color: $primary;

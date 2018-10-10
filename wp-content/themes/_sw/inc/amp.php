@@ -69,8 +69,7 @@ function _sw_amp_query_var($vars) {
 add_filter('query_vars', '_sw_amp_query_var');
 
 function _sw_amp_template($template) {
-  // $options = get_option('amp') ?: array();
-  if (get_query_var('amp')=='1') {
+  if (get_query_var('amp')) {
     $template = locate_template(array('templates/amp.php'));
   }
   return $template;

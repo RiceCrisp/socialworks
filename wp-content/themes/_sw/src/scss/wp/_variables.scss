@@ -90,7 +90,7 @@ $breaks-alt: (
   }
 }
 
-@mixin overlay($color: rgba(#000, 0.5)) {
+@mixin overlay($color: rgba(#000, 0.4)) {
   position: relative;
   &:after {
     content: '';
