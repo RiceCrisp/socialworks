@@ -127,7 +127,7 @@ function _sw_thumbnail_background($id = null, $size = 'full') {
     $x = get_post_meta($id, '_banner-x', true);
     $y = get_post_meta($id, '_banner-y', true);
     $xy = $x != '' && $y != '' ? 'background-position: ' . $x . '% ' . $y . '%;' : '';
-    $output = 'style="background-image: url(' . get_the_post_thumbnail_url($id, $size) . ');' . $xy . '"';
+    $output = 'background-image: url(' . get_the_post_thumbnail_url($id, $size) . ');' . $xy;
     return $output;
   } else {
     return '';
