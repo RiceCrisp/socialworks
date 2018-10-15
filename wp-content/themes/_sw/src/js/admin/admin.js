@@ -103,8 +103,6 @@ if (jQuery('#seo-meta-inside #seo-desc').val()) {
 var mediaUploader;
 jQuery(document).on('click', '.media-selector', function(e) {
   e.preventDefault();
-  // var target = jQuery(this).attr('target');
-  // var size = jQuery(this).attr('size');
   mediaUploader = wp.media.frames.file_frame = wp.media({
     title: 'Select Image',
     button: {
@@ -112,7 +110,6 @@ jQuery(document).on('click', '.media-selector', function(e) {
   }, multiple: false });
   mediaUploader.on('select', function() {
     var attachment = mediaUploader.state().get('selection').first().toJSON();
-    console.log(attachment);
     jQuery(e.target).next().val(attachment.id);
     if (attachment.sizes && attachment.sizes.standard) {
       jQuery(e.target).next().next().find('img').attr('src', attachment.sizes.standard.url);

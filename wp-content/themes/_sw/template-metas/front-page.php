@@ -3,6 +3,7 @@
 function _sw_fp_meta_fields() {
   wp_nonce_field(basename(__FILE__), 'fp-nonce');
   $fp_event_bg = get_post_meta(get_the_ID(), '_fp-event-bg', true);
+  $fp_event_video = get_post_meta(get_the_ID(), '_fp-event-video', true);
   $fp_cta_1 = get_post_meta(get_the_ID(), '_fp-cta-1', true);
   $fp_locations = get_post_meta(get_the_ID(), '_fp-locations', true) ?: array();
   $fp_social_img = get_post_meta(get_the_ID(), '_fp-social-img', true) ?: array('', '', '', ''); ?>
@@ -11,14 +12,15 @@ function _sw_fp_meta_fields() {
       <li class="row">
         <div class="col-xs-12">
           <fieldset>
-            <legend>Event</legend>
+            <legend>Events</legend>
             <ul>
               <li>
                 <label for="fp-event-bg">Background Image</label>
-                <div class="row">
-                  <button class="button media-selector" target="#fp-event-bg">Select Image</button>
-                  <input id="fp-event-bg" name="fp-event-bg" class="flex-1" type="text" value="<?= $fp_event_bg; ?>">
-                </div>
+                <?= _sw_media_selector('fp-event-bg', 'fp-event-bg', $fp_event_bg); ?>
+              </li>
+              <li>
+                <label for="fp-event-video">Video</label>
+                <input id="fp-event-video" name="fp-event-video" type="text" value="<?= $fp_event_video; ?>">
               </li>
             </ul>
           </fieldset>
@@ -117,6 +119,9 @@ function _sw_save_fp_meta($post_id) {
 
   $fp_event_bg = isset($_POST['fp-event-bg']) ? $_POST['fp-event-bg'] : '';
   update_post_meta($post_id, '_fp-event-bg', $fp_event_bg);
+
+  $fp_event_video = isset($_POST['fp-event-video']) ? $_POST['fp-event-video'] : '';
+  update_post_meta($post_id, '_fp-event-video', $fp_event_video);
 
   $fp_cta_1 = isset($_POST['fp-cta-1']) ? $_POST['fp-cta-1'] : '';
   update_post_meta($post_id, '_fp-cta-1', $fp_cta_1);

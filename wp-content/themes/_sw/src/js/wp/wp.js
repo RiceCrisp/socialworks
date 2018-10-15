@@ -61,76 +61,36 @@ function onScreen(el, offset) {
 
 (function() {
   // Lightbox logic
-  var lbs = document.querySelectorAll('a.lightbox-link');
+  const lbs = document.querySelectorAll('a.lightbox-link');
   for (var i = 0; i < lbs.length; i++) {
     lbs[i].addEventListener('click', function(event) {
       event.preventDefault();
-      var lb = document.createElement('div');
+      const lb = document.createElement('div');
       lb.classList.add('lightbox');
       lb.setAttribute('role', 'dialog');
-      var lbc = document.createElement('div');
-      lbc.classList.add('container');
-      lbc.classList.add('row');
-      var lbh = document.createElement('div');
-      lbh.classList.add('col-xs-12');
-      lbh.classList.add('lightbox-header');
-      var lbbtn = document.createElement('button');
-      lbbtn.classList.add('lightbox-close');
-      lbbtn.setAttribute('aria-label', 'Close Dialog');
-      var lbsvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      lbsvg.setAttribute('viewBox', '0 0 24 24');
-      var lbpath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      lbpath.setAttribute('d', 'M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z');
-      var lbr = document.createElement('div');
-      lbr.classList.add('col-xs-12');
-      lbr.classList.add('lightbox-content');
-      var lbv = document.createElement('div');
-      lbv.classList.add('video-container');
-      var lbi = document.createElement('iframe');
-      lbi.setAttribute('src', this.getAttribute('href'));
-      lbi.setAttribute('frameborder', '0');
-      lbi.setAttribute('webkitallowfullscreen', '');
-      lbi.setAttribute('mozallowfullscreen', '');
-      lbi.setAttribute('allowfullscreen', '');
-      lb.appendChild(lbc);
-      lbc.appendChild(lbh);
-      lbh.appendChild(lbbtn);
-      lbbtn.appendChild(lbsvg);
-      lbsvg.appendChild(lbpath);
-      lbc.appendChild(lbr);
-      lbr.appendChild(lbv);
-      lbv.appendChild(lbi)
+      lb.innerHTML = '<div class="container row">\
+        <div class="col-xs-12 lightbox-content">\
+          <div class="video-container">\
+            <iframe src="' + this.getAttribute('href') + '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>\
+          </div>\
+        </div>\
+        <button class="lightbox-close-click" aria-label="Close Lightbox"></button>\
+      </div>';
       document.body.insertBefore(lb, document.body.firstChild);
       document.body.classList.add('no-scroll');
       window.setTimeout(function() {
         document.querySelector('.lightbox').classList.add('show');
-      }, 10)
-    });
-  }
-  lbs = document.querySelectorAll('.lightbox-button');
-  for (i = 0; i < lbs.length; i++) {
-    lbs[i].addEventListener('click', function(event) {
-      if (this.nextElementSibling.classList.contains('lightbox')) {
-        this.nextElementSibling.classList.add('show');
-        document.body.classList.add('no-scroll');
-      }
-    });
-  }
-  lbs = document.querySelectorAll('.lightbox-hide');
-  for (i = 0; i < lbs.length; i++) {
-    lbs[i].addEventListener('click', function(event) {
-      this.parentNode.parentNode.parentNode.parentNode.classList.remove('show');
-      document.body.classList.remove('no-scroll');
+      }, 10);
     });
   }
   document.addEventListener('click', function(event) {
-    if (checkParents(event.target, '.lightbox-close')) {
-      var lightbox = document.querySelector('.lightbox');
+    if (event.target.classList.contains('lightbox-close-click')) {
+      const lightbox = document.querySelector('.lightbox');
       lightbox.classList.remove('show');
-      lightbox.addEventListener(transitionEvent, function(event) {
-        event.target.removeEventListener(event.type, arguments.callee);
+      lightbox.addEventListener(transitionEvent, function lightboxListener(event) {
+        event.target.removeEventListener(event.type, lightboxListener);
         document.body.classList.remove('no-scroll');
-        var lightbox = document.querySelector('.lightbox');
+        const lightbox = document.querySelector('.lightbox');
         try {
           lightbox.parentElement.removeChild(lightbox);
         }
@@ -154,7 +114,7 @@ function onScreen(el, offset) {
 
   // Social Media share buttons
   var shares = document.querySelectorAll('.share-button');
-  for (i = 0; i < shares.length; i++) {
+  for (var i = 0; i < shares.length; i++) {
     shares[i].addEventListener('click', function(event) {
       event.preventDefault();
       window.open(this.getAttribute('href'), this.getAttribute('target'), 'resizeable,width=550,height=520');
@@ -164,7 +124,7 @@ function onScreen(el, offset) {
   // Infinite scroll
   var btns = document.querySelectorAll('.infinite-scroll-btn')
   if (btns) {
-    for (i = 0; i < btns.length; i++) {
+    for (var i = 0; i < btns.length; i++) {
       var div = document.createElement('div');
       div.classList.add('col-xs-12', 'load-more');
       var btn = document.createElement('button');
@@ -219,7 +179,7 @@ function onScreen(el, offset) {
   });
   var scrolls = document.querySelectorAll('.infinite-scroll');
   if (scrolls) {
-    for (i = 0; i < scrolls.length; i++) {
+    for (var i = 0; i < scrolls.length; i++) {
       var loopContainer = scrolls[i];
       var loading = false;
       var load = document.createElement('div');
@@ -230,7 +190,7 @@ function onScreen(el, offset) {
     }
     window.addEventListener('scroll', function() {
       var containers = document.querySelectorAll('.infinite-scroll');
-      for (i = 0; i < containers.length; i++) {
+      for (var i = 0; i < containers.length; i++) {
         infiniteCheck(containers[i]);
       }
     });
@@ -344,7 +304,7 @@ function onScreen(el, offset) {
   var lazys = document.querySelectorAll('.lazy-load[data-src]:not([src])');
   function findLazy() {
     lazys = document.querySelectorAll('.lazy-load[data-src]:not([src])');
-    for (i = 0; i < lazys.length; i++) {
+    for (var i = 0; i < lazys.length; i++) {
       if (lazys[i].tagName=='IMG') {
         lazys[i].src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
       }
@@ -352,7 +312,7 @@ function onScreen(el, offset) {
     lazyCheck();
   }
   function lazyCheck() {
-    for (i = 0; i < lazys.length; i++) {
+    for (var i = 0; i < lazys.length; i++) {
       if (onScreen(lazys[i], 200)) {
         if (lazys[i].tagName=='IMG') {
           if (lazys[i].getAttribute('src')=='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7') {

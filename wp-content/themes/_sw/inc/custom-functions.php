@@ -111,6 +111,9 @@ function _sw_img($id = null, $size = 'large', $lazy = false) {
 
 // Get featured image for background images
 function _sw_thumbnail_background($id = null, $size = 'full') {
+  if (get_query_var('amp')) {
+    return;
+  }
   if (!$id) {
     global $post;
     if ($post) {
@@ -123,8 +126,8 @@ function _sw_thumbnail_background($id = null, $size = 'full') {
   if (has_post_thumbnail($id)) {
     $x = get_post_meta($id, '_banner-x', true);
     $y = get_post_meta($id, '_banner-y', true);
-    $xy = $x != '' && $y != '' ? $x . '% ' . $y . '%' : 'center';
-    $output = 'background:#005587 url(' . get_the_post_thumbnail_url($id, $size) . ') ' . $xy . '/cover;';
+    $xy = $x != '' && $y != '' ? 'background-position: ' . $x . '% ' . $y . '%;' : '';
+    $output = 'style="background-image: url(' . get_the_post_thumbnail_url($id, $size) . ');' . $xy . '"';
     return $output;
   } else {
     return '';

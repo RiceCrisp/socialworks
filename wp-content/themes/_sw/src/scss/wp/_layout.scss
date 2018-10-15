@@ -158,6 +158,26 @@ a.tax {
   padding-top: 20px;
   padding-bottom: 20px;
 }
+.lightbox-link {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  padding: 15px 11px 15px 19px;
+  border-radius: 50%;
+  background-color: #fff;
+  opacity: 0.6;
+  box-shadow: $shadow;
+  transition: 0.3s;
+  &:hover {
+    opacity: 1;
+  }
+  svg {
+    display: block;
+    width: 50px;
+    height: 50px;
+
+  }
+}
 .lightbox {
   background: rgba(0, 0, 0, 0.7);
   position: fixed;
@@ -177,27 +197,34 @@ a.tax {
   &.show {
     opacity: 1;
   }
-}
-.lightbox-header {
-  height: 50px;
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 25px;
-  .lightbox-close {
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-    fill: #fff;
-    transition: 0.3s;
-    stroke-width: 1;
-    padding: 10px;
-    &:hover {
-      fill: #aaa;
-    }
+  .row {
+    align-items: center;
   }
-}
-.lightbox-content {
-  margin-bottom: 25px;
+  .lightbox-close-click {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: transparent;
+  }
+  .lightbox-content {
+    text-align: right;
+    max-height: 100vh;
+  }
+  .close {
+    width: 30px;
+    height: 30px;
+    fill: #fff;
+    margin-bottom: 5px;
+  }
+  .video-container {
+    position: relative;
+    z-index: 2;
+  }
 }
 .error-msg {
   margin-top: 20px;

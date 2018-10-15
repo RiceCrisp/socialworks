@@ -30,7 +30,15 @@ get_header(); ?>
       endforeach; ?>
     </div>
   </section>
-  <section class="hero" style="background-image:url(<?= get_post_meta(get_the_ID(), '_fp-event-bg', true); ?>)">
+  <section class="hero" style="background-image:url(<?= wp_get_attachment_image_src(get_post_meta(get_the_ID(), '_fp-event-bg', true), 'full')[0]; ?>)">
+    <?php
+    $video = get_post_meta(get_the_ID(), '_fp-event-video', true);
+    if ($video) : ?>
+      <div class="center">
+        <a href="<?= $video; ?>" class="lightbox-link"><?= do_shortcode('[svg id="play"]'); ?></a>
+      </div>
+    <?php
+    endif; ?>
   </section>
   <section class="fp-events">
     <?php

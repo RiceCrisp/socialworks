@@ -8,6 +8,7 @@ function _sw_init_meta_fields() {
   $init_img = get_post_meta(get_the_ID(), '_init-img', true);
   $init_tabs = get_post_meta(get_the_ID(), '_init-tabs', true) ?: array();
   $init_kpis_img = get_post_meta(get_the_ID(), '_init-kpis-img', true);
+  $init_kpis_video = get_post_meta(get_the_ID(), '_init-kpis-video', true);
   $init_kpis = get_post_meta(get_the_ID(), '_init-kpis', true) ?: array('', '', '');
   $init_kpis_btn_text = get_post_meta(get_the_ID(), '_init-kpis-btn-text', true);
   $init_kpis_btn_url = get_post_meta(get_the_ID(), '_init-kpis-btn-url', true);
@@ -82,6 +83,10 @@ function _sw_init_meta_fields() {
               <li>
                 <label for="init-kpis-img">Background Image</label>
                 <?= _sw_media_selector('init-kpis-img', 'init-kpis-img', $init_kpis_img); ?>
+              </li>
+              <li>
+                <label for="init-kpis-video">Video</label>
+                <input id="init-kpis-video" name="init-kpis-video" type="text" value="<?= $init_kpis_video; ?>" />
               </li>
               <?php
               foreach ($init_kpis as $i=>$kpi) : ?>
@@ -199,6 +204,9 @@ function _sw_save_init_meta($post_id) {
 
   $init_kpis_img = isset($_POST['init-kpis-img']) ? $_POST['init-kpis-img'] : '';
   update_post_meta($post_id, '_init-kpis-img', $init_kpis_img);
+
+  $init_kpis_video = isset($_POST['init-kpis-video']) ? $_POST['init-kpis-video'] : '';
+  update_post_meta($post_id, '_init-kpis-video', $init_kpis_video);
 
   $init_kpis = isset($_POST['init-kpis']) ? $_POST['init-kpis'] : '';
   update_post_meta($post_id, '_init-kpis', $init_kpis);

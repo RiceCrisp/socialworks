@@ -7,6 +7,9 @@
   @at-root {
     .hero {
       height: 600px;
+      .lightbox-link {
+        margin-top: 100px;
+      }
     }
     .fp-events {
       margin-top: -$section-padding*3;

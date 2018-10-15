@@ -31,9 +31,9 @@ function _sw_svg_options_page() { ?>
       if (!wp_is_writable($filename)) {
         echo '<div class="warning">You do not have write permissions to the SVG file.</div>';
       } ?>
-      <!-- <label for="svg-import">Import Data <small>.svg file</small></label>
+      <label for="svg-import">Import Data <small>.svg file</small></label>
       <input id="svg-import" type="file" accept=".svg" />
-      <span class="import-msg"></span> -->
+      <span class="import-msg"></span>
       <section <?= !wp_is_writable($filename) ? 'class="disabled"' : ''; ?>>
         <button id="add-svg-top" class="button">Add SVG</button>
         <ul class="sortable-container">

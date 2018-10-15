@@ -113,6 +113,14 @@ get_header(); ?>
     endif;
   endif; ?>
   <section class="hero" style="background-image:url(<?= wp_get_attachment_image_src(get_post_meta(get_the_ID(), '_init-kpis-img', true), 'large')[0]; ?>)">
+    <?php
+    $video = get_post_meta(get_the_ID(), '_init-kpis-video', true);
+    if ($video) : ?>
+      <div class="center">
+        <a href="<?= $video; ?>" class="lightbox-link"><?= do_shortcode('[svg id="play"]'); ?></a>
+      </div>
+    <?php
+    endif; ?>
   </section>
   <section class="init-kpis">
     <?php
