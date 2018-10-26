@@ -31,9 +31,10 @@ get_header(); ?>
           </select>
         <?php
         elseif ($tax == 'event') : ?>
-          <label for="filter">Timeline</label>
+          <label for="filter">Filter</label>
           <select id="filter" name="filter">
-            <option value="upcoming" <?= !$filter || $filter=='upcoming' ? 'selected' : ''; ?>>Upcoming</option>
+            <option value="" <?= !$filter ? 'selected' : ''; ?>>All</option>
+            <option value="upcoming" <?= $filter=='upcoming' ? 'selected' : ''; ?>>Upcoming</option>
             <option value="past" <?= $filter=='past' ? 'selected' : ''; ?>>Past</option>
           </select>
         <?php
@@ -76,7 +77,7 @@ get_header(); ?>
       $args['meta_query'] = array(
         'relation' => 'OR'
       );
-      if (!$filter || $filter=='upcoming') {
+      if ($filter=='upcoming') {
         array_push($args['meta_query'],
           array(
             'key' => '_event-sortable-start',
