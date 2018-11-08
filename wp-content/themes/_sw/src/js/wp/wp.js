@@ -4,7 +4,7 @@
  * THIS FILE CONTAINS FUNCTIONALITY THAT HAS SHOWN UP FREQUENTLY ENOUGH IN PAST PROJECTS THAT IT HAS BECOME FAIRLY STANDARD.
  * HOWEVER, IF A PROJECT DOESN'T REQUIRE CERTAIN METHODS/LIBRARIES, COMMENT THEM OUT TO LIMIT FILE SIZE.
  */
- console.time('JS Runtime');
+ // console.time('JS Runtime');
 
 //=include svg4everybody/dist/svg4everybody.min.js
 //=include objectFitPolyfill/dist/objectFitPolyfill.min.js
@@ -560,4 +560,4 @@ document.addEventListener('click', function(e) {
 if (typeof svg4everybody == 'function') {
   svg4everybody();
 }
-console.timeEnd('JS Runtime');
+// console.timeEnd('JS Runtime');

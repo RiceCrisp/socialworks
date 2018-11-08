@@ -31,7 +31,9 @@ get_header(); ?>
         <section class="init-main">
           <div class="container row">
             <div class="col-md-4 main-img">
-              <?= _sw_img(get_post_meta(get_the_ID(), '_init-side', true), 'standard', true); ?>
+              <?php
+              $main_img = get_post_meta(get_the_ID(), '_init-side', true) ?>
+              <img class="lazy-load" data-src="<?= wp_get_attachment_image_src($main_img, 'standard')[0]; ?>" alt="<?= get_post_meta($main_img, '_wp_attachment_image_alt', true); ?>" />
             </div>
             <div class="col-md-8 card-container">
               <?php
@@ -55,7 +57,7 @@ get_header(); ?>
                 <?= $text; ?>
               </div>
               <div class="col-xl-offset-1 col-lg-4 col-md-5 col-sm-10 col-sm-offset-1">
-                <?= _sw_img($img, 'standard', true); ?>
+                <img class="lazy-load" data-src="<?= wp_get_attachment_image_src($img, 'standard')[0]; ?>" alt="<?= get_post_meta($img, '_wp_attachment_image_alt', true); ?>" />
               </div>
             </div>
           </section>

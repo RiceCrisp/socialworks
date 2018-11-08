@@ -21,27 +21,6 @@ function _sw_banner_meta_fields() {
           <textarea id="banner-subheadline" name="banner-subheadline" class="text-editor"><?= $banner_subheadline; ?></textarea>
         </div>
       </li>
-      <!-- <li class="row">
-        <div class="col-xs-12">
-          <fieldset>
-            <legend>Headline Element Type</legend>
-            <ul class="headline-type">
-              <li class="inline-option">
-                <input id="banner-headline-type-h1" name="banner-headline-type" type="radio" value="h1" <?= $banner_headline_type == 'h1' || $banner_headline_type == '' ? 'checked' : ''; ?> />
-                <label for="banner-headline-type-h1">h1</label>
-              </li>
-              <li class="inline-option">
-                <input id="banner-headline-type-h2" name="banner-headline-type" type="radio" value="h2" <?= $banner_headline_type == 'h2' ? 'checked' : ''; ?> />
-                <label for="banner-headline-type-h2">h2</label>
-              </li>
-              <li class="inline-option">
-                <input id="banner-headline-type-p" name="banner-headline-type" type="radio" value="p" <?= $banner_headline_type == 'p' ? 'checked' : ''; ?> />
-                <label for="banner-headline-type-p">p</label>
-              </li>
-            </ul>
-          </fieldset>
-        </div>
-      </li> -->
       <li class="row">
         <div class="col-sm-6">
           <label for="banner-author">Author Override</label>
@@ -67,6 +46,7 @@ add_action('add_meta_boxes', '_sw_banner_meta');
 function _sw_featured_image_pos($html) {
   $banner_x = get_post_meta(get_the_ID(), '_banner-x', true);
   $banner_y = get_post_meta(get_the_ID(), '_banner-y', true);
+  $banner_video = get_post_meta(get_the_ID(), '_banner-video', true);
   $html .= '<p><small>Recommended Size: 1500 x 750 (2:1)</small></p>
   <fieldset class="banner-align">
     <legend>Image Alignment</legend>
@@ -123,6 +103,9 @@ function _sw_save_banner_meta($post_id) {
 
   $banner_y = isset($_POST['banner-y']) ? $_POST['banner-y'] : '';
   update_post_meta($post_id, '_banner-y', $banner_y);
+
+  $banner_video = isset($_POST['banner-video']) ? $_POST['banner-video'] : '';
+  update_post_meta($post_id, '_banner-video', $banner_video);
 }
 add_action('save_post', '_sw_save_banner_meta');
 

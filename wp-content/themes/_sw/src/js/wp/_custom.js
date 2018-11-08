@@ -28,7 +28,6 @@ if (tabs.length) {
 
 var filter = document.querySelector('#gallery-filters select');
 if (filter) {
-  console.log(filter);
   filter.addEventListener('change', function(e) {
     document.querySelector('#gallery-filters').submit();
   });

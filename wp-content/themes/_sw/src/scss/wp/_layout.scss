@@ -158,7 +158,7 @@ a.tax {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-.lightbox-link {
+.lightbox-link:not(.btn) {
   display: inline-block;
   width: 80px;
   height: 80px;

@@ -127,7 +127,7 @@ get_header(); ?>
       $imgs = get_post_meta(get_the_ID(), '_fp-social-img', true) ?: array();
       foreach ($imgs as $img) : ?>
         <div class="col-lg-3 col-xs-6">
-          <?= _sw_img($img, 'standard', true); ?>
+          <img class="lazy-load" data-src="<?= wp_get_attachment_image_src($img, 'standard')[0]; ?>" alt="<?= get_post_meta($img, '_wp_attachment_image_alt', true); ?>" />
         </div>
       <?php
       endforeach; ?>
