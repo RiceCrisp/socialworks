@@ -105,9 +105,11 @@
     }
     .main-img {
       img {
+        width: calc(100% + 100px);
+        max-width: initial;
         margin-right: -100px;
         @include media-breakpoint-down(sm) {
-          margin-right: 0;
+          width: 100%;
         }
       }
     }
@@ -121,6 +123,9 @@
     padding-top: 0;
     .row {
       align-items: center;
+    }
+    img {
+      width: 100%;
     }
     // .thumbnail-container, img {
     //   border-radius: 50%;
