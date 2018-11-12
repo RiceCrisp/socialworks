@@ -66,6 +66,10 @@ function _sw_featured_image_pos($html) {
         </div>
       </div>
     </div>
+  </fieldset>
+  <fieldset class="banner-video">
+    <label for="banner-video">Video</label>
+    <input id="banner-video" name="banner-video" type="text" value="' . $banner_video . '" />
   </fieldset>';
   return $html;
 }

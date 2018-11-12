@@ -1,4 +1,14 @@
 <header class="page-header" <?= get_query_var('amp') ? '' : 'style="' . _sw_thumbnail_background() . '"'; ?>>
+  <?php
+  $video = get_post_meta(get_the_ID(), '_banner-video', true);
+  if ($video) : ?>
+    <div class="video-container">
+      <video autoplay muted loop>
+        <source src="<?= $video; ?>" type="video/mp4">
+      </video>
+    </div>
+  <?php
+  endif; ?>
   <div class="container row">
     <div class="col-xs-12">
       <?php
