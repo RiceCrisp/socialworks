@@ -37,12 +37,17 @@ class TranslationPlugin {
 
 function generateCSS(root, options) {
   let output = ''
+
   const colorVariables = themeJSON.global.colors.map(color => `$${color.slug}:${color.color};`)
-  const colors = themeJSON.global.colors.map(color => `${color.slug}:$${color.slug}`)
   output += colorVariables.join('')
+  const colors = themeJSON.global.colors.map(color => `${color.slug}:$${color.slug}`)
   output += `$colors:(${colors.join(',')});`
+
+  const gradientVariables = themeJSON.global.gradients.map(gradient => `$${gradient.slug}:${gradient.gradient};`)
+  output += gradientVariables.join('')
   const gradients = themeJSON.global.gradients.map(gradient => `${gradient.slug}:${gradient.gradient}`)
   output += `$gradients:(${gradients.join(',')});`
+
   root.prepend(output)
 }
 
