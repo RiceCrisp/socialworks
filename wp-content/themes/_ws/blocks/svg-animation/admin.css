@@ -1,0 +1,8 @@
+@import '../../src/css/admin/modules/variables.css';
+
+.ws-block-svg-animation {
+  min-height: 50px;
+  /* .svg-animation {
+    height: 500px;
+  } */
+}

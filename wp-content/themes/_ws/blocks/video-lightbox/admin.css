@@ -1,0 +1,21 @@
+@import '../../src/css/admin/modules/variables.css';
+
+.ws-block-video-lightbox {
+  .video-lightbox {
+    position: relative;
+    min-width: 100px;
+    min-height: 100px;
+    svg {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background: #fff;
+      color: #000;
+      border-radius: 50%;
+      padding: 10px 5px 10px 10px;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

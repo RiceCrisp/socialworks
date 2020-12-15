@@ -1,0 +1,39 @@
+@import '../../src/css/front/modules/variables.css';
+
+.wp-block-ws-card {
+  overflow: hidden;
+  &.has-background {
+    background: transparent;
+  }
+  &.image-right {
+    @media (--md-up) {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: stretch;
+      .object-fit-container {
+        width: 40%;
+        height: auto;
+        flex: none;
+      }
+    }
+  }
+  &.image-left {
+    @media (--md-up) {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      .object-fit-container {
+        width: 40%;
+        height: auto;
+        flex: none;
+      }
+    }
+  }
+  &.extra-padding {
+    @media (--lg-up) {
+      .card-body {
+        padding: calc($card-padding * 2) calc($card-padding * 2) calc($card-padding * 2 - $default-margin);
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@import '../../src/css/front/modules/variables.css';
+
+.wp-block-ws-latest-upcoming {
+  &.is-style-tiles {
+    .container {
+      padding: 0;
+      width: 100%;
+      margin: 0;
+    }
+    .card-row {
+      margin: 0;
+      padding: 0.5px;
+    }
+    .card-container {
+      padding: 0.5px;
+      margin: 0;
+    }
+    .card {
+      box-shadow: none;
+    }
+  }
+}

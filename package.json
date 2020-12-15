@@ -1,39 +1,68 @@
 {
   "name": "wordpress",
   "version": "1.0.0",
-  "description": "Social Works WordPress Theme (_sw)",
-  "main": "index.php",
-  "scripts": {
-    "start": "gulp",
-    "build": "gulp build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com:RiceCrisp/socialworks.git"
-  },
+  "description": "Walker Sands Base WordPress Theme (_ws)",
   "author": "Blake Boucher",
   "license": "ISC",
+  "homepage": "https://bitbucket.org/walkersandsdigital/walkersands_base_wp-theme#readme",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/walkersandsdigital/walkersands_base_wp-theme.git"
+  },
+  "main": "index.php",
+  "scripts": {
+    "dev": "webpack --watch --config webpack.config.dev.js",
+    "lint": "webpack --env=lint --config webpack.config.dev.js",
+    "prod": "webpack --watch --config webpack.config.prod.js",
+    "build": "webpack --config webpack.config.prod.js"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%"
+  ],
   "dependencies": {
-    "objectFitPolyfill": "^2.1.1",
-    "svg4everybody": "^2.1.9",
-    "tiny-slider": "^2.7.3",
-    "vue": "^2.5.16"
+    "countup.js": "^2.0.4",
+    "lottie-web": "^5.5.9",
+    "objectFitPolyfill": "^2.2.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-sortable-hoc": "^1.9.1",
+    "vue": "^2.6.10"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.7.0",
-    "browser-sync": "^2.24.4",
-    "del": "^3.0.0",
-    "gulp": "github:gulpjs/gulp#4.0",
-    "gulp-autoprefixer": "^5.0.0",
-    "gulp-babel": "^7.0.1",
-    "gulp-cli": "^2.0.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-include": "^2.3.1",
-    "gulp-plumber": "^1.2.0",
-    "gulp-rename": "^1.2.3",
-    "gulp-sass": "^4.0.1",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-uglify": "^3.0.0"
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "assets-webpack-plugin": "^5.1.2",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.3.0",
+    "cssnano": "^4.1.10",
+    "eslint": "^7.11.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-react": "^7.21.4",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-webpack-plugin": "^2.1.0",
+    "gettext-parser": "^3.1.1",
+    "mini-css-extract-plugin": "^1.0.0",
+    "postcss-hexrgba": "^1.0.2",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^4.0.4",
+    "postcss-syntax": "^0.36.2",
+    "precss": "^4.0.0",
+    "stylelint": "^13.7.2",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-scss": "^3.18.0",
+    "stylelint-webpack-plugin": "^2.1.0",
+    "terser-webpack-plugin": "^4.2.3",
+    "webpack": "^5.0.0",
+    "webpack-cli": "^4.0.0",
+    "wp-pot": "^1.7.1"
   }
 }

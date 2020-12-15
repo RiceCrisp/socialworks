@@ -1,0 +1,21 @@
+@import '../../src/css/front/modules/variables.css';
+
+.wp-block-ws-testimonial {
+  [class*="col-"] {
+    margin-left: 0;
+  }
+  .quote-image {
+    margin: 0 $default-margin calc($default-margin * 2) 0;
+  }
+  blockquote {
+    margin-bottom: 0;
+  }
+  .quote {
+    @include h(3);
+    margin: 0;
+  }
+  cite {
+    display: inline-block;
+    margin: $default-margin 0 0;
+  }
+}

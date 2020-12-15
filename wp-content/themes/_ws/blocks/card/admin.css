@@ -1,0 +1,11 @@
+@import '../../src/css/admin/modules/variables.css';
+
+.ws-block-card {
+  background: #fff;
+  padding: 0;
+  color: #000;
+  .card {
+    background: transparent;
+    color: inherit;
+  }
+}

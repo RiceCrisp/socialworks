@@ -13,18 +13,25 @@
 
 # Ignore everything in the root except the following:
 /*
-!.gitignore
-!package.json
-!gulpfile.babel.js
-!.babelrc
 !wp-content/
-!manifest.json
+!.eslintrc
+!.gitignore
+!.phpcs.xml
+!.stylelintrc
+!bitbucket-pipelines.yml
+!.github
+!docker-compose.yml
+!init.sh
+!package*.json
+!README.md
 !sw.js
+!webpack.config*.js
 
 # Ignore everything in the "wp-content" directory, except the "plugins"
 # and "themes" directories.
 wp-content/*
 !wp-content/plugins/
+!wp-content/mu-plugins/
 !wp-content/themes/
 
 # Ignore everything in the "plugins" directory, except the plugins you
@@ -36,5 +43,5 @@ wp-content/plugins/*
 # Ignore everything in the "themes" directory, except the themes you
 # specify (see the commented-out example for a hint on how to do this.)
 wp-content/themes/*
-!wp-content/themes/_sw/
-wp-content/themes/_sw/template-parts/sprites.svg
+!wp-content/themes/_ws/
+wp-content/themes/_ws/dist/

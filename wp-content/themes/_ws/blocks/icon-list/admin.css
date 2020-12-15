@@ -1,0 +1,26 @@
+.ws-block-icon-list {
+  .ws-block-icon-list-item {
+    margin: 0;
+    break-inside: avoid;
+    + .ws-block-icon-list-item {
+      margin-top: 5px;
+    }
+  }
+  .icon-list-item {
+    display: flex;
+    align-items: center;
+    .components-svg-picker {
+      margin-right: 10px;
+      .components-base-control__field {
+        margin: 0;
+      }
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    p {
+      margin: 0;
+    }
+  }
+}

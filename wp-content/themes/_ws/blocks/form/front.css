@@ -1,0 +1,10 @@
+@import '../../src/css/front/modules/variables.css';
+
+.wp-block-ws-form {
+  form {
+    margin: 0;
+  }
+  .form-msg {
+    display: none;
+  }
+}

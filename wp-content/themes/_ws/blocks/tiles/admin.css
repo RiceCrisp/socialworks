@@ -1,0 +1,61 @@
+@import '../../src/css/admin/modules/variables.css';
+
+.ws-block-tiles {
+  .tile-grid {
+    > .block-editor-inner-blocks {
+      > .block-editor-block-list__layout {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        > .block-list-appender {
+          align-self: center;
+          .block-editor-button-block-appender {
+            width: auto;
+            background: none;
+            outline: none;
+          }
+        }
+      }
+    }
+    &.has-gutters {
+      > .block-editor-inner-blocks {
+        > .block-editor-block-list__layout {
+          grid-gap: 10px;
+        }
+      }
+    }
+  }
+}
+
+.ws-block-tile {
+  width: 100%;
+  margin: 0 !important;
+  grid-column-end: span 1;
+  grid-row-end: span 1;
+  &.one-two {
+    grid-row-end: span 2;
+    > .ws-block-container {
+      @include ratio(200%);
+    }
+  }
+  &.two-one {
+    grid-column-end: span 2;
+    > .ws-block-container {
+      @include ratio(50%);
+    }
+  }
+  &.two-two {
+    grid-column-end: span 2;
+    grid-row-end: span 2;
+  }
+  > .ws-block-container {
+    @include ratio(100%);
+    padding: 0;
+    height: 100%;
+    .tile {
+      padding: 15px;
+    }
+    .block-editor-default-block-appender {
+      clear: none;
+    }
+  }
+}

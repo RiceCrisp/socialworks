@@ -1,0 +1,176 @@
+/*
+* General
+*/
+@each $color $slug in $colors {
+  .has-$(slug)-color {
+    color: $color;
+    .wp-block-button__inline-link {
+      color: $color;
+    }
+  }
+}
+
+@each $color $slug in $colors {
+  .has-$(slug)-background-color {
+    > .ws-block-container {
+      background-color: $color;
+    }
+  }
+}
+
+@each $gradient $slug in $gradients {
+  :root {
+    .has-$(slug)-gradient-background {
+      background-image: $gradient;
+      > .ws-block-container {
+        background-image: $gradient;
+      }
+    }
+  }
+}
+
+.block-editor-plain-text {
+  .has-text-color & {
+    color: $text-color;
+  }
+}
+
+.hide-featured-image {
+  .editor-post-featured-image__container {
+    display: none;
+  }
+}
+
+.column-count-2 {
+  column-count: 2;
+}
+
+.column-count-3 {
+  column-count: 3;
+}
+
+.card {
+  @include card;
+}
+
+.label {
+  .editor-styles-wrapper & {
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0;
+    font-size: 12px;
+  }
+}
+
+.invalid {
+  input {
+    background: rgba(#f00, 0.2);
+  }
+}
+
+@keyframes busy {
+  0% {
+    background-position: 200px 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.is-default.is-busy {
+  animation: busy 2s infinite linear;
+  background: linear-gradient(-45deg, #e2e4e7 28%, #fff 28%, #fff 72%, #e2e4e7 72%);
+  background-size: 100px 100%;
+  &:hover, &:focus:enabled, &:active:enabled {
+    background: linear-gradient(-45deg, #e2e4e7 28%, #fff 28%, #fff 72%, #e2e4e7 72%);
+    background-size: 100px 100%;
+  }
+}
+
+.components-button.is-primary.is-busy {
+  animation: busy 2s infinite linear;
+  background: linear-gradient(-45deg, #0085ba 28%, #005d82 28%, #005d82 72%, #0085ba 72%);
+  background-size: 100px 100%;
+  &:hover, &:focus:enabled, &:active:enabled {
+    background: linear-gradient(-45deg, #0085ba 28%, #005d82 28%, #005d82 72%, #0085ba 72%);
+    background-size: 100px 100%;
+  }
+}
+
+/*
+* Editor
+*/
+.wp-block {
+  max-width: $editor-width;
+}
+
+.block-editor .editor-styles-wrapper {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.block-editor-default-block-appender textarea.block-editor-default-block-appender__content {
+  color: inherit;
+  opacity: 0.6;
+}
+
+.components-dropdown > .block-editor-button-block-appender {
+  background: rgba(#fff, 0.75);
+}
+
+.components-unit-control__unit-label {
+  font-size: 10px !important;
+}
+
+/*
+* Sortable
+*/
+.sortable-item {
+  padding: 0 5px;
+  list-style: none;
+  width: 100%;
+  margin: calc($grid-padding * 2) 0 0 0;
+  .card {
+    height: 100%;
+    margin: 0;
+  }
+}
+
+.sortable-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 5px 0 2px;
+  padding: 0 0 $card-padding 0;
+  > * {
+    z-index: 2;
+  }
+  + .card-image {
+    margin-top: calc(-36px - $card-padding * 2);
+  }
+}
+
+.sortable-handle {
+  cursor: grab;
+  padding: 8px;
+  background-color: rgba(#fff, 0.2);
+  border-radius: 4px;
+  svg {
+    display: block;
+    fill: $icon-gray;
+  }
+  &:hover, .sortable-help & {
+    background: #fff;
+    svg {
+      fill: $icon-black;
+    }
+  }
+}
+
+.sortable-delete {
+  background-color: rgba(#fff, 0.2);
+}
+
+.grabbing {
+  cursor: grabbing;
+}

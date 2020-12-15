@@ -1,0 +1,34 @@
+@import '../../src/css/admin/modules/variables.css';
+
+.ws-block-social-links {
+  > .ws-block-container {
+    > .block-editor-inner-blocks {
+      > .block-editor-block-list__layout {
+        display: flex;
+        align-items: center;
+        margin-left: -10px;
+        margin-right: -10px;
+        > * {
+          padding-left: 10px;
+          padding-right: 10px;
+          flex: 0 1 auto;
+          &.block-list-appender {
+            button {
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  .components-svg-picker {
+    min-width: 0;
+    flex: none;
+    .components-base-control__field {
+      margin-bottom: 0;
+    }
+  }
+  .url-input {
+    margin-bottom: 0;
+  }
+}

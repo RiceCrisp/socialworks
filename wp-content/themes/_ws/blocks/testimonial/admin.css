@@ -1,0 +1,11 @@
+@import '../../src/css/admin/modules/variables.css';
+
+.ws-block-testimonial {
+  .media-preview {
+    img {
+      width: 100px;
+      height: auto;
+      border-radius: 50%;
+    }
+  }
+}

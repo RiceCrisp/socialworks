@@ -1,0 +1,48 @@
+{
+  "global": {
+    "colors": [
+      {
+        "name": "Black",
+        "slug": "black",
+        "color": "#333333"
+      },
+      {
+        "name": "Magenta",
+        "slug": "magenta",
+        "color": "#ae20af"
+      },
+      {
+        "name": "Cyan",
+        "slug": "cyan",
+        "color": "#44f0e0"
+      },
+      {
+        "name": "Orange",
+        "slug": "orange",
+        "color": "#f66551"
+      },
+      {
+        "name": "Yellow",
+        "slug": "yellow",
+        "color": "#ecb95f"
+      },
+      {
+        "name": "Gray",
+        "slug": "gray",
+        "color": "#f5f7f7"
+      },
+      {
+        "name": "White",
+        "slug": "white",
+        "color": "#ffffff"
+      }
+    ],
+    "gradients": [
+      {
+        "name": "Blue",
+        "slug": "blue",
+        "gradient": "linear-gradient(90deg, rgba(20, 119, 216, 1) 0%, rgba(5, 186, 236, 1) 100%)"
+      }
+    ]
+  }
+}

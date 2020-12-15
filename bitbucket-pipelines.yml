@@ -1,0 +1,52 @@
+image: dpolyakov/docker-node-latest-with-rsync
+
+pipelines:
+  branches:
+    master:
+      - step:
+          name: Commit
+          script:
+            - echo 'Commit Complete'
+      - step:
+          name: Deploy
+          caches:
+            - node
+          deployment: production
+          trigger: manual
+          script:
+            - npm install
+            - npm run build
+            - rsync -rv --delete-excluded --exclude 'src' ./wp-content/themes/_ws/ $PROD_SSH_USER@$PROD_SSH_HOST:/sites/$PROD_SSH_USER/wp-content/themes/_ws/
+            # - pipe: atlassian/sftp-deploy:0.5.3
+            #   variables:
+            #     USER: $PROD_SFTP_USER
+            #     SERVER: $PROD_SFTP_HOST
+            #     LOCAL_PATH: 'wp-content/themes/_ws/*'
+            #     REMOTE_PATH: $PROD_SFTP_PATH
+            #     PASSWORD: $PROD_SFTP_PASSWORD
+            #     EXTRA_ARGS: "-P $PROD_SFTP_PORT"
+            - echo 'Deployment Complete'
+    staging:
+      - step:
+          name: Commit
+          script:
+            - echo 'Commit Complete'
+      - step:
+          name: Deploy
+          caches:
+            - node
+          deployment: staging
+          trigger: manual
+          script:
+            - npm install
+            - npm run build
+            - rsync -rv --delete-excluded --exclude 'src' ./wp-content/themes/_ws/ $STAG_SSH_USER@$STAG_SSH_HOST:/sites/$STAG_SSH_USER/wp-content/themes/_ws/
+            # - pipe: atlassian/sftp-deploy:0.5.3
+            #   variables:
+            #     USER: $STAG_SFTP_USER
+            #     SERVER: $STAG_SFTP_HOST
+            #     LOCAL_PATH: 'wp-content/themes/_ws/*'
+            #     REMOTE_PATH: $STAG_SFTP_PATH
+            #     PASSWORD: $STAG_SFTP_PASSWORD
+            #     EXTRA_ARGS: "-P $STAG_SFTP_PORT"
+            - echo 'Deployment Complete'

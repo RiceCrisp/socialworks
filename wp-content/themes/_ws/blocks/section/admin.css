@@ -1,0 +1,24 @@
+@import '../../src/css/admin/modules/variables.css';
+
+.ws-block-section {
+  &.has-background {
+    padding: 0;
+  }
+  > .ws-block-container {
+    padding: 10px 20px;
+    border: 1px dashed $border-color;
+    > .width-narrowest {
+      padding: 0 15%;
+    }
+    > .width-narrower {
+      padding: 0 10%;
+    }
+    > .width-narrow {
+      padding: 0 5%;
+    }
+    > .width-wide {
+      margin-left: -15px;
+      margin-right: -15px;
+    }
+  }
+}
