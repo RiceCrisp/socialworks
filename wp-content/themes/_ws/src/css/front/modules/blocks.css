@@ -316,7 +316,6 @@
 
 .wp-block-search {
   display: flex;
-  align-items: flex-start;
   flex-wrap: wrap;
   margin: 0 -10px;
   max-width: 576px;
@@ -324,13 +323,18 @@
     @include screenreader;
   }
   .wp-block-search__input {
-    margin-left: 10px;
-    margin-right: 10px;
-    flex: 1 1 auto;
+    margin: 0 10px $default-margin;
+    flex: 1 1 0;
+    border: 0;
+    min-width: 0;
+    @media (--sm-down) {
+      flex: 1 1 100%;
+    }
   }
   .wp-block-search__button {
-    margin-left: 10px;
-    margin-right: 10px;
+    @include button;
+    border: 0;
+    margin: 0 10px $default-margin;
   }
 }
 

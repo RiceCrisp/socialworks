@@ -17,10 +17,10 @@ Walker Sands Base Wordpress Theme (_ws)
 - Make sure you don't have any overlapping Docker containers running. This can be checked with `docker ps`
 - If you need to access the bash shell of the wordpress docker container, use command `docker exec -ti CONTAINER_NAME bash`
 - If you want to change the project folder name, but don't want to lose any work that you've already done (because changing the project folder name will create new docker containers/volumes), use the command `docker-compose -p OLD_FOLDER_NAME up -d` to reference the old containers/volumes.
-- To see the php error log, use this command `docker logs -f CONTAINER_NAME >/dev/null`
+- To see the php error logs, use this command `docker logs -f CONTAINER_NAME >/dev/null`
 
-### WP Engine Setup ###
-Since we want to build our files before we push them, Git isn't ideal for handling code deployment. WP Engine, however, offers SSH connections, so we can use SSH and a tool called rsync to handle deploying code.
+### Bitbucket & WP Engine Setup ###
+You can use Bitbucket Pipelines to build and deploy the theme when a new commit is pushed to the repository. If the site is hosted on WP Engine we can use rsync to transfer files.
 
 1. Start a new project with a clone of the Walker Sands Base
     1. `git clone git@bitbucket.org:walkersandsdigital/walkersands_base_wp-theme.git FOLDER_NAME`
@@ -43,8 +43,8 @@ Since we want to build our files before we push them, Git isn't ideal for handli
     4. `git push -u origin master`
 6. Run pipeline in Bitbucket to deploy to WP Engine (may have to wait a couple minutes for WP Engine to add SSH key)
 
-### Non WP Engine Setup ###
-If the client is on a host other than WP Engine, try to setup the ssh/rsync first, but if not available, we have a SFTP fallback.
+### Bitbucket & Non WP Engine Setup ###
+If the client is on a host other than WP Engine, try to setup the ssh/rsync first. If it is not available/possible, use this SFTP fallback.
 
 1. Copy Walker Sands Base and start new project
     1. `git clone git@bitbucket.org:walkersandsdigital/walkersands_base_wp-theme.git FOLDER_NAME`
@@ -64,4 +64,26 @@ If the client is on a host other than WP Engine, try to setup the ssh/rsync firs
     2. `git commit -m 'First commit'`
     3. `git remote add origin git@bitbucket.org:walkersandsdigital/REPO_NAME.git`
     4. `git push -u origin master`
-5. Run pipeline in Bitbucket to deploy to WP Engine (may have to wait a couple minutes for WP Engine to add SSH key)  
+5. Run pipeline in Bitbucket to deploy to WP Engine (may have to wait a couple minutes for WP Engine to add SSH key)
+
+### Github & WP Engine Setup ###
+If the client requires the theme repository be GitHub, you can use these steps to setup GitHub Actions, which is the GitHub equivalent of Bitbucket Pipelines.
+
+1. Start a new project with a clone of the Walker Sands Base
+    1. `git clone git@bitbucket.org:walkersandsdigital/walkersands_base_wp-theme.git FOLDER_NAME`
+    2. `cd FOLDER_NAME`
+    3. `rm -r .git`
+    4. `git init`
+2. Generate a SSH key pair
+    1. Run `ssh-keygen` and save the key pair. After we put both private and public keys into GitHub and WP Engine (respectively), you can delete the key pair from your machine.
+3. Setup GitHub
+    1. Create new GitHub repo
+    2. Add the private key that we generated earlier as a secret named PRIVATE_KEY
+    3. Add the following relevant secret variables: STAG_SSH_USER, STAG_SSH_HOST, PROD_SSH_USER, PROD_SSH_HOST
+4. Add the public key that we generated earlier to the WP Engine account (not to the "git push" options)
+5. Make first commit to master
+    1. `git add .`
+    2. `git commit -m 'First commit'`
+    3. `git remote add origin git@bitbucket.org:walkersandsdigital/REPO_NAME.git`
+    4. `git push -u origin master`
+6. Run the Action in GitHub to deploy to WP Engine (may have to wait a couple minutes for WP Engine to add SSH key)

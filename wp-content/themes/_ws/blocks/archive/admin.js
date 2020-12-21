@@ -162,7 +162,7 @@ export const archive = {
                 }
                 if (filter === 'search') {
                   return (
-                    <div className="archive-search">Search</div>
+                    <div className="archive-filter search">Search</div>
                   )
                 }
                 if (taxonomies) {

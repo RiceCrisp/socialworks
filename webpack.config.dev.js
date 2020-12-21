@@ -51,7 +51,7 @@ function generateCSS(root, options) {
 }
 
 module.exports = (env, argv) => {
-  let plugins = [
+  const plugins = [
     new CleanWebpackPlugin(),
     new AssetsPlugin({
       filename: 'assets.json',

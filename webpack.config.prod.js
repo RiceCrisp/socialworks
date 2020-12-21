@@ -77,7 +77,7 @@ module.exports = (env, argv) => {
           'src/**/*.js',
           'blocks/**/*.js'
         ]
-      }),
+      })
     )
   }
   return {
@@ -126,7 +126,7 @@ module.exports = (env, argv) => {
     },
     plugins: plugins,
     watchOptions: {
-      ignored: [themeDir + 'dist', 'node_modules']
+      ignored: [themeDir + 'dist/**', 'node_modules/**']
     },
     module: {
       rules: [
